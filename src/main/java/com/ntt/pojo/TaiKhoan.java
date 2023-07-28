@@ -11,11 +11,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -34,7 +33,11 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "TaiKhoan.findByMatKhau", query = "SELECT t FROM TaiKhoan t WHERE t.matKhau = :matKhau"),
     @NamedQuery(name = "TaiKhoan.findByLoaiTaiKhoan", query = "SELECT t FROM TaiKhoan t WHERE t.loaiTaiKhoan = :loaiTaiKhoan")})
 public class TaiKhoan implements Serializable {
-
+    
+    public static final String Admin="ROLE_ADMIN";
+    public static final String KhachHang="ROLE_KHACHHANG";
+    public static final String ChuTro="ROLE_CHUTRO";
+    
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -48,7 +51,7 @@ public class TaiKhoan implements Serializable {
     private String tenTaiKhoan;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 45)
+    @Size(min = 1, max = 1000)
     @Column(name = "mat_khau")
     private String matKhau;
     @Basic(optional = false)
@@ -56,9 +59,9 @@ public class TaiKhoan implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "loai_tai_khoan")
     private String loaiTaiKhoan;
-    @JoinColumn(name = "id_nguoi_dung", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private NguoiDung idNguoiDung;
+    @Transient
+    private String xacNhanMatKhau;
+
 
     public TaiKhoan() {
     }
@@ -106,14 +109,6 @@ public class TaiKhoan implements Serializable {
         this.loaiTaiKhoan = loaiTaiKhoan;
     }
 
-    public NguoiDung getIdNguoiDung() {
-        return idNguoiDung;
-    }
-
-    public void setIdNguoiDung(NguoiDung idNguoiDung) {
-        this.idNguoiDung = idNguoiDung;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -137,6 +132,20 @@ public class TaiKhoan implements Serializable {
     @Override
     public String toString() {
         return "com.ntt.pojo.TaiKhoan[ id=" + id + " ]";
+    }
+
+    /**
+     * @return the xacNhanMatKhau
+     */
+    public String getXacNhanMatKhau() {
+        return xacNhanMatKhau;
+    }
+
+    /**
+     * @param xacNhanMatKhau the xacNhanMatKhau to set
+     */
+    public void setXacNhanMatKhau(String xacNhanMatKhau) {
+        this.xacNhanMatKhau = xacNhanMatKhau;
     }
     
 }

@@ -20,7 +20,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configurable
 @EnableWebMvc
 @EnableTransactionManagement
-@ComponentScan(basePackages = "com.ntt.controllers")
+@ComponentScan(basePackages = {
+        "com.ntt.controllers",
+        "com.ntt.repository",
+        "com.ntt.service"
+         })
 public class WebAppContextConfig implements WebMvcConfigurer {
 
     @Override

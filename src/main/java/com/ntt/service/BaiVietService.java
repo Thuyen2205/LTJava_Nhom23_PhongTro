@@ -4,13 +4,13 @@
  */
 package com.ntt.service;
 
+import com.ntt.pojo.BaiViet;
 import java.util.List;
-import java.util.Map;
 
 /**
  *
  * @author ThanhThuyen
  */
-public interface BaiViet {
-    List<BaiViet> getBaiViets(Map<String, String> params);
+public interface BaiVietService {
+    List<BaiViet> getBaiViet();
 }

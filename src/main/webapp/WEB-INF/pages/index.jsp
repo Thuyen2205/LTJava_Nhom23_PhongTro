@@ -9,8 +9,8 @@
 <!DOCTYPE html>
 <html>
     <body>
-        <c:forEach items="${phongtro}" var="p">
-            Phòng số ${p.id} - ${p.diaChi} - ${p.dienTich} - ${p.soNguoi} - ${p.tinhTrang} - ${p.thongTinThem} 
+        <c:forEach items="${baiviet}" var="p">
+            Bài viết thứ ${p.id} -${p.ngayDang}- ${p.tenBai}- ${p.tacGia} 
             <br></br>
         </c:forEach>
     </body>

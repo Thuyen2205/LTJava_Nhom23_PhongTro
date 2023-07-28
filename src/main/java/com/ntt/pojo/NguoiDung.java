@@ -36,7 +36,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "NguoiDung.findByEmail", query = "SELECT n FROM NguoiDung n WHERE n.email = :email"),
     @NamedQuery(name = "NguoiDung.findBySdt", query = "SELECT n FROM NguoiDung n WHERE n.sdt = :sdt"),
     @NamedQuery(name = "NguoiDung.findByDiaChi", query = "SELECT n FROM NguoiDung n WHERE n.diaChi = :diaChi"),
-    @NamedQuery(name = "NguoiDung.findByGioiTinh", query = "SELECT n FROM NguoiDung n WHERE n.gioiTinh = :gioiTinh")})
+    @NamedQuery(name = "NguoiDung.findByGioiTinh", query = "SELECT n FROM NguoiDung n WHERE n.gioiTinh = :gioiTinh"),
+    @NamedQuery(name = "NguoiDung.findByIdTaiKhoan", query = "SELECT n FROM NguoiDung n WHERE n.idTaiKhoan = :idTaiKhoan")})
 public class NguoiDung implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -70,6 +71,10 @@ public class NguoiDung implements Serializable {
     @NotNull
     @Column(name = "gioi_tinh")
     private short gioiTinh;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "id_tai_khoan")
+    private int idTaiKhoan;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idNguoiDung")
     private Set<BinhLuan> binhLuanSet;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idNguoiDung")
@@ -78,8 +83,6 @@ public class NguoiDung implements Serializable {
     private Set<ThongBao> thongBaoSet;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idNguoiDung")
     private Set<BaiViet> baiVietSet;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idNguoiDung")
-    private Set<TaiKhoan> taiKhoanSet;
 
     public NguoiDung() {
     }
@@ -88,13 +91,14 @@ public class NguoiDung implements Serializable {
         this.id = id;
     }
 
-    public NguoiDung(Integer id, String tenNguoiDung, String email, String sdt, String diaChi, short gioiTinh) {
+    public NguoiDung(Integer id, String tenNguoiDung, String email, String sdt, String diaChi, short gioiTinh, int idTaiKhoan) {
         this.id = id;
         this.tenNguoiDung = tenNguoiDung;
         this.email = email;
         this.sdt = sdt;
         this.diaChi = diaChi;
         this.gioiTinh = gioiTinh;
+        this.idTaiKhoan = idTaiKhoan;
     }
 
     public Integer getId() {
@@ -145,6 +149,14 @@ public class NguoiDung implements Serializable {
         this.gioiTinh = gioiTinh;
     }
 
+    public int getIdTaiKhoan() {
+        return idTaiKhoan;
+    }
+
+    public void setIdTaiKhoan(int idTaiKhoan) {
+        this.idTaiKhoan = idTaiKhoan;
+    }
+
     @XmlTransient
     public Set<BinhLuan> getBinhLuanSet() {
         return binhLuanSet;
@@ -179,15 +191,6 @@ public class NguoiDung implements Serializable {
 
     public void setBaiVietSet(Set<BaiViet> baiVietSet) {
         this.baiVietSet = baiVietSet;
-    }
-
-    @XmlTransient
-    public Set<TaiKhoan> getTaiKhoanSet() {
-        return taiKhoanSet;
-    }
-
-    public void setTaiKhoanSet(Set<TaiKhoan> taiKhoanSet) {
-        this.taiKhoanSet = taiKhoanSet;
     }
 
     @Override
