@@ -34,7 +34,7 @@ Author     : ThanhThuyen
                 </c:if>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="javascript:void(0)">Đăng bài</a>
+                    <a class="nav-link" href="<c:url value ="/dangbai"/> ">Đăng bài</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="javascript:void(0)">Thông báo</a>

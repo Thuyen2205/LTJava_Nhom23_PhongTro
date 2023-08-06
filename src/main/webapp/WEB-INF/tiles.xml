@@ -47,4 +47,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
                 template="/WEB-INF/pages/dangki.jsp">
     </definition>
     
+    <definition name="dangbai" extends="baseLayout">
+        <put-attribute name="title" value="Trang chủ" />
+        <put-attribute name="content"
+                       value="/WEB-INF/pages/dangbai.jsp" />
+    </definition>
+    
+    
 </tiles-definitions>

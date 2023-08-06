@@ -6,25 +6,29 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<link href="<c:url value="/css/trangchu.css"/>"rel="stylesheet">
 <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 <html>
-
-
+    <h1 class="text-center text-danger">Đăng bài </h1>
+    <c:url value="/dangbai" var="action"/>
     <div>
-        <h1>Đăng bài </h1>
-        <form :form method="POST" modelAttribute="word" enctype="multipart/form-data">
-            <table>
 
-                <tr>
-                    <td><spring:message code="label.image"/></td>
-                <td><form:input id="imageId" path="img" type="file"/></td>
-                    </tr>
-
-            </table>
-
-
+        <form:form method="post" action="${action}" modelAttribute="baiviet" enctype="multipart/form-data" >
+            <div>
+                <label for="file">Ảnh nhà trọ: </label>
+                <br></br>
+                <form:input type="file" id="file" path="file" cssClass="form -control"/>
+            </div>
+            <div>
+                <label for="file">Thông tin bài viết: </label>
+                <br></br>
+                <form:input type="text"  path="thongTin" cssClass="form -control"/>
+            </div>
+            <br></br>
+            <div class="form-group">
+                <input type="submit" value="Them Bai Viet" class="btn btn-danger"/>
+            </div>
         </form:form>
     </div>
 

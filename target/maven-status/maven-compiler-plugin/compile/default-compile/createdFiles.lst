@@ -8,6 +8,7 @@ com\ntt\configs\CustomSuccessHandler.class
 com\ntt\service\impl\BaiVietServiceImpl.class
 com\ntt\pojo\ThongBao_.class
 com\ntt\repository\impl\TaiKhoanRepositoryImpl.class
+com\ntt\controllers\BaiVietController.class
 com\ntt\pojo\TinChoThue.class
 com\ntt\repository\TaiKhoanRepository.class
 com\ntt\configs\SecurityWebAppInitializer.class
