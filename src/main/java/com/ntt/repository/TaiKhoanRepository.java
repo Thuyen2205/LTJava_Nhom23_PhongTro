@@ -4,7 +4,7 @@
  */
 package com.ntt.repository;
 
-import com.ntt.pojo.TaiKhoan;
+import com.ntt.pojo.NguoiDung;
 import java.util.List;
 
 /**
@@ -12,6 +12,6 @@ import java.util.List;
  * @author ThanhThuyen
  */
 public interface TaiKhoanRepository {
-    boolean addTaiKhoan(TaiKhoan taikhoan);
-    List<TaiKhoan> getTaiKhoan(String username);
+    boolean addTaiKhoan(NguoiDung nguoidung);
+    List<NguoiDung> getTaiKhoan(String username);
 }

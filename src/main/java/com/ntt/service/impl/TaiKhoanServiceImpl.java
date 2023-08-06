@@ -4,7 +4,7 @@
  */
 package com.ntt.service.impl;
 
-import com.ntt.pojo.TaiKhoan;
+import com.ntt.pojo.NguoiDung;
 import com.ntt.repository.TaiKhoanRepository;
 import com.ntt.service.TaiKhoanService;
 import java.util.HashSet;
@@ -29,28 +29,28 @@ public class TaiKhoanServiceImpl implements TaiKhoanService{
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
     @Override
-    public boolean addTaiKhoan(TaiKhoan taikhoan) {
+    public boolean addTaiKhoan(NguoiDung nguoidung) {
         
-        String pass=taikhoan.getMatKhau(); 
-        taikhoan.setMatKhau(this.passwordEncoder.encode(pass));
-        taikhoan.setLoaiTaiKhoan(TaiKhoan.KhachHang);
-       return this.taikhoanRepository.addTaiKhoan(taikhoan);
+        String pass=nguoidung.getMatKhau(); 
+        nguoidung.setMatKhau(this.passwordEncoder.encode(pass));
+//        nguoidung.setLoaiTaiKhoan(NguoiDung.KhachHang);
+        return this.taikhoanRepository.addTaiKhoan(nguoidung);
     }
 
     @Override
-    public List<TaiKhoan> getTaiKhoan(String username) {
+    public List<NguoiDung> getTaiKhoan(String username) {
       return this.taikhoanRepository.getTaiKhoan(username);
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-       List<TaiKhoan> taikhoans=this.getTaiKhoan(username);
+       List<NguoiDung> taikhoans=this.getTaiKhoan(username);
        
        if(taikhoans.isEmpty())
        {
            throw new UsernameNotFoundException("Tai Khoan Khong Ton Tại!!!");
        }
-       TaiKhoan taikhoan=taikhoans.get(0);
+       NguoiDung taikhoan=taikhoans.get(0);
        
        Set<GrantedAuthority> auth= new HashSet<>();
        auth.add(new SimpleGrantedAuthority(taikhoan.getLoaiTaiKhoan()));

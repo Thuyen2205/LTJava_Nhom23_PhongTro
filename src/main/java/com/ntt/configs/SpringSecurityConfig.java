@@ -7,6 +7,7 @@ package com.ntt.configs;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 
 import org.springframework.context.annotation.ComponentScan;
@@ -33,6 +34,10 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
     @Autowired
     private UserDetailsService userDetailsService;
     
+    @Autowired
+    @Qualifier("customSuccessHandler")
+    private CustomSuccessHandler customSuccessHandler;
+    
     @Bean
     public BCryptPasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
@@ -50,13 +55,19 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         
-        http.formLogin().loginPage("/login")
+        http.formLogin().loginPage("/dangnhap")
                 .usernameParameter("username")
                 .passwordParameter("password");
         
-        http.formLogin().defaultSuccessUrl("/").failureUrl("/login?error");
+        http.formLogin().successHandler(customSuccessHandler).failureUrl("/dangnhap?errorr");
         
-        http.logout().logoutSuccessUrl("/login");
+//        http.formLogin().defaultSuccessUrl("/").failureUrl("/dangnhap?error");
+        
+        http.logout().logoutSuccessUrl("/dangnhap");
+        http.exceptionHandling().accessDeniedPage("/dangnhap?accessDenied");
+        http.authorizeRequests().antMatchers("/").permitAll()
+                .antMatchers("/admin").access("hasRole('ROLE')");
+       
         http.csrf().disable();
         
         

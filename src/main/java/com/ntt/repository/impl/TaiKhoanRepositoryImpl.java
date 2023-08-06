@@ -4,7 +4,7 @@
  */
 package com.ntt.repository.impl;
 
-import com.ntt.pojo.TaiKhoan;
+import com.ntt.pojo.NguoiDung;
 import com.ntt.repository.TaiKhoanRepository;
 import java.util.List;
 import javax.persistence.Query;
@@ -31,10 +31,10 @@ public class TaiKhoanRepositoryImpl implements TaiKhoanRepository{
     @Autowired
     private LocalSessionFactoryBean sessionFactory;
     @Override
-    public boolean addTaiKhoan(TaiKhoan taikhoan) {
+    public boolean addTaiKhoan(NguoiDung nguoidung) {
         Session session= this.sessionFactory.getObject().getCurrentSession();
         try{
-           session.save(taikhoan);
+           session.save(nguoidung);
            return true;
         }catch(HibernateException ex){
             System.err.println(ex.getMessage()); 
@@ -43,11 +43,11 @@ public class TaiKhoanRepositoryImpl implements TaiKhoanRepository{
     }
 
     @Override
-    public List<TaiKhoan> getTaiKhoan(String username) {
+    public List<NguoiDung> getTaiKhoan(String username) {
         Session s= this.sessionFactory.getObject().getCurrentSession();
         CriteriaBuilder builder= s.getCriteriaBuilder();
-        CriteriaQuery<TaiKhoan> query= builder.createQuery(TaiKhoan.class);
-        Root root=query.from(TaiKhoan.class);
+        CriteriaQuery<NguoiDung> query= builder.createQuery(NguoiDung.class);
+        Root root=query.from(NguoiDung.class);
         query= query.select(root);
         
         if(!username.isEmpty())

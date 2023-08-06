@@ -4,7 +4,7 @@
  */
 package com.ntt.controllers;
 
-import com.ntt.pojo.TaiKhoan;
+import com.ntt.pojo.NguoiDung;
 import com.ntt.service.TaiKhoanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
@@ -35,18 +35,18 @@ public class DangKiController {
 
     @GetMapping("/dangki")
     public String dangkiView(Model model) {
-        model.addAttribute("user", new TaiKhoan());
+        model.addAttribute("user", new NguoiDung());
         return "dangki";
 
     }
 
     @PostMapping("/dangki")
-    public String dangki(Model model, @ModelAttribute(value = "user") TaiKhoan taikhoan) {
+    public String dangki(Model model, @ModelAttribute(value = "user") NguoiDung nguoidung) {
 
         String errMsg = "";
-        if (taikhoan.getMatKhau().equals(taikhoan.getXacNhanMatKhau())) {
-            if (this.taikhoanDetailsService.addTaiKhoan(taikhoan) == true) {
-                return "redirect:/login";
+        if (nguoidung.getMatKhau().equals(nguoidung.getXacNhanMatKhau())) {
+            if (this.taikhoanDetailsService.addTaiKhoan(nguoidung) == true) {
+                return "redirect:/dangnhap";
             } else {
                 errMsg = "Đã có lỗi xãy ra";
             }

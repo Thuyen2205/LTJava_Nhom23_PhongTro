@@ -68,8 +68,6 @@ public class BaiViet implements Serializable {
     private TinTimTro tinTimTro;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idBaiViet")
     private Set<BinhLuan> binhLuanSet;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idBaiViet")
-    private Set<HinhAnh> hinhAnhSet;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "baiViet")
     private TinChoThue tinChoThue;
     @JoinColumn(name = "id_nguoi_dung", referencedColumnName = "id")
@@ -140,15 +138,6 @@ public class BaiViet implements Serializable {
 
     public void setBinhLuanSet(Set<BinhLuan> binhLuanSet) {
         this.binhLuanSet = binhLuanSet;
-    }
-
-    @XmlTransient
-    public Set<HinhAnh> getHinhAnhSet() {
-        return hinhAnhSet;
-    }
-
-    public void setHinhAnhSet(Set<HinhAnh> hinhAnhSet) {
-        this.hinhAnhSet = hinhAnhSet;
     }
 
     public TinChoThue getTinChoThue() {

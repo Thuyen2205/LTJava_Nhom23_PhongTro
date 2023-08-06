@@ -4,7 +4,7 @@
  */
 package com.ntt.controllers;
 
-import com.ntt.pojo.TaiKhoan;
+import com.ntt.pojo.NguoiDung;
 import com.ntt.service.TaiKhoanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

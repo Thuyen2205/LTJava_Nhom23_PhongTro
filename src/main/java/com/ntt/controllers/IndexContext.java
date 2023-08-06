@@ -5,6 +5,7 @@
 package com.ntt.controllers;
 
 
+import com.ntt.pojo.NguoiDung;
 import com.ntt.service.BaiVietService;
 import java.util.Map;
 import javax.persistence.Query;
@@ -31,7 +32,7 @@ public class IndexContext {
     
     @RequestMapping("/")
     @Transactional
-    public String index(Model model){
+    public String index(Model model, NguoiDung nguoidung){
         
         model.addAttribute("baiviet", this.baiviet.getBaiViet());
         return "index";

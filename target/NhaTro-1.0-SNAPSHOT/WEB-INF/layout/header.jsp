@@ -18,7 +18,7 @@ Author     : ThanhThuyen
             <ul class="navbar-nav me-auto">
                 <c:if test="${pageContext.request.userPrincipal.name == null}">
                     <li class="nav-item">
-                        <a class="nav-link" href="<c:url value ="/login"/>"> Đăng nhập </a>                       
+                        <a class="nav-link" href="<c:url value ="/dangnhap"/>"> Đăng nhập </a>                       
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<c:url value ="/dangki"/>"> Đăng kí </a>                       
@@ -29,7 +29,7 @@ Author     : ThanhThuyen
                         <a class="nav-link" href="<c:url value ="/" />"> ${pageContext.request.userPrincipal.name} </a>                       
                     </li>
                      <li class="nav-item">
-                        <a class="nav-link" href="<c:url value ="/logout" />"> Logout </a>                       
+                        <a class="nav-link" href="<c:url value ="/logout" />"> Đăng xuất </a>                       
                     </li>
                 </c:if>
 

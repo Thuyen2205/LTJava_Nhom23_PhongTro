@@ -1,9 +1,9 @@
 C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\pojo\BinhLuan.java
-C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\pojo\TaiKhoan.java
 C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\configs\SpringSecurityConfig.java
-C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\pojo\HinhAnh.java
 C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\configs\WebAppContextConfig.java
 C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\controllers\TaiKhoanController.java
+C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\configs\CustomSuccessHandler.java
+C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\configs\AppConfig.java
 C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\pojo\BaiViet.java
 C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\configs\DispatcherServletInit.java
 C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\configs\TitlesConfig.java
@@ -15,10 +15,10 @@ C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\pojo\TinChoT
 C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\service\impl\TaiKhoanServiceImpl.java
 C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\configs\SecurityWebAppInitializer.java
 C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\controllers\IndexContext.java
-C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\controllers\LoginController.java
 C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\pojo\NguoiDung.java
 C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\configs\HibernateConfig.java
 C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\controllers\DangKiController.java
+C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\controllers\DangNhapController.java
 C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\repository\impl\BaiVietRepositoryImpl.java
 C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\repository\BaiVietRepository.java
 C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\service\BaiVietService.java

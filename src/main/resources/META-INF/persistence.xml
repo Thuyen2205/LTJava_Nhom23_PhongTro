@@ -12,6 +12,7 @@
     <class>com.ntt.pojo.NhaTro</class>
     <class>com.ntt.pojo.TieuChi</class>
     <class>com.ntt.pojo.TaiKhoan</class>
+    <class>com.ntt.pojo.PhongTro</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/phongtro?zeroDateTimeBehavior=CONVERT_TO_NULL"/>

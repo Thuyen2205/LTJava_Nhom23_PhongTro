@@ -17,6 +17,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -37,9 +38,15 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "NguoiDung.findBySdt", query = "SELECT n FROM NguoiDung n WHERE n.sdt = :sdt"),
     @NamedQuery(name = "NguoiDung.findByDiaChi", query = "SELECT n FROM NguoiDung n WHERE n.diaChi = :diaChi"),
     @NamedQuery(name = "NguoiDung.findByGioiTinh", query = "SELECT n FROM NguoiDung n WHERE n.gioiTinh = :gioiTinh"),
-    @NamedQuery(name = "NguoiDung.findByIdTaiKhoan", query = "SELECT n FROM NguoiDung n WHERE n.idTaiKhoan = :idTaiKhoan")})
+    @NamedQuery(name = "NguoiDung.findByTenTaiKhoan", query = "SELECT n FROM NguoiDung n WHERE n.tenTaiKhoan = :tenTaiKhoan"),
+    @NamedQuery(name = "NguoiDung.findByMatKhau", query = "SELECT n FROM NguoiDung n WHERE n.matKhau = :matKhau"),
+    @NamedQuery(name = "NguoiDung.findByLoaiTaiKhoan", query = "SELECT n FROM NguoiDung n WHERE n.loaiTaiKhoan = :loaiTaiKhoan")})
 public class NguoiDung implements Serializable {
-
+    
+    public static final String Admin="ROLE_ADMIN";
+    public static final String KhachHang="ROLE_KHACHHANG";
+    public static final String ChuTro="ROLE_CHUTRO";
+    
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -69,12 +76,24 @@ public class NguoiDung implements Serializable {
     private String diaChi;
     @Basic(optional = false)
     @NotNull
+    @Size(min = 1, max = 45)
     @Column(name = "gioi_tinh")
-    private short gioiTinh;
+    private String gioiTinh;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "id_tai_khoan")
-    private int idTaiKhoan;
+    @Size(min = 1, max = 45)
+    @Column(name = "ten_tai_khoan")
+    private String tenTaiKhoan;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 100)
+    @Column(name = "mat_khau")
+    private String matKhau;
+    @Size(max = 45)
+    @Column(name = "loai_tai_khoan")
+    private String loaiTaiKhoan;
+    @Transient
+    private String xacNhanMatKhau;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idNguoiDung")
     private Set<BinhLuan> binhLuanSet;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idNguoiDung")
@@ -91,14 +110,15 @@ public class NguoiDung implements Serializable {
         this.id = id;
     }
 
-    public NguoiDung(Integer id, String tenNguoiDung, String email, String sdt, String diaChi, short gioiTinh, int idTaiKhoan) {
+    public NguoiDung(Integer id, String tenNguoiDung, String email, String sdt, String diaChi, String gioiTinh, String tenTaiKhoan, String matKhau) {
         this.id = id;
         this.tenNguoiDung = tenNguoiDung;
         this.email = email;
         this.sdt = sdt;
         this.diaChi = diaChi;
         this.gioiTinh = gioiTinh;
-        this.idTaiKhoan = idTaiKhoan;
+        this.tenTaiKhoan = tenTaiKhoan;
+        this.matKhau = matKhau;
     }
 
     public Integer getId() {
@@ -141,20 +161,36 @@ public class NguoiDung implements Serializable {
         this.diaChi = diaChi;
     }
 
-    public short getGioiTinh() {
+    public String getGioiTinh() {
         return gioiTinh;
     }
 
-    public void setGioiTinh(short gioiTinh) {
+    public void setGioiTinh(String gioiTinh) {
         this.gioiTinh = gioiTinh;
     }
 
-    public int getIdTaiKhoan() {
-        return idTaiKhoan;
+    public String getTenTaiKhoan() {
+        return tenTaiKhoan;
     }
 
-    public void setIdTaiKhoan(int idTaiKhoan) {
-        this.idTaiKhoan = idTaiKhoan;
+    public void setTenTaiKhoan(String tenTaiKhoan) {
+        this.tenTaiKhoan = tenTaiKhoan;
+    }
+
+    public String getMatKhau() {
+        return matKhau;
+    }
+
+    public void setMatKhau(String matKhau) {
+        this.matKhau = matKhau;
+    }
+
+    public String getLoaiTaiKhoan() {
+        return loaiTaiKhoan;
+    }
+
+    public void setLoaiTaiKhoan(String loaiTaiKhoan) {
+        this.loaiTaiKhoan = loaiTaiKhoan;
     }
 
     @XmlTransient
@@ -216,6 +252,20 @@ public class NguoiDung implements Serializable {
     @Override
     public String toString() {
         return "com.ntt.pojo.NguoiDung[ id=" + id + " ]";
+    }
+
+    /**
+     * @return the xacNhanMatKhau
+     */
+    public String getXacNhanMatKhau() {
+        return xacNhanMatKhau;
+    }
+
+    /**
+     * @param xacNhanMatKhau the xacNhanMatKhau to set
+     */
+    public void setXacNhanMatKhau(String xacNhanMatKhau) {
+        this.xacNhanMatKhau = xacNhanMatKhau;
     }
     
 }

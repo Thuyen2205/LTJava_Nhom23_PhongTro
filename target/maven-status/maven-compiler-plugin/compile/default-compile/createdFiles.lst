@@ -1,11 +1,10 @@
 com\ntt\pojo\NguoiDung.class
 com\ntt\configs\WebAppContextConfig.class
 com\ntt\configs\SpringSecurityConfig.class
-com\ntt\pojo\TaiKhoan_.class
 com\ntt\controllers\TaiKhoanController.class
 com\ntt\pojo\NguoiDung_.class
 com\ntt\repository\impl\BaiVietRepositoryImpl.class
-com\ntt\controllers\LoginController.class
+com\ntt\configs\CustomSuccessHandler.class
 com\ntt\service\impl\BaiVietServiceImpl.class
 com\ntt\pojo\ThongBao_.class
 com\ntt\repository\impl\TaiKhoanRepositoryImpl.class
@@ -13,6 +12,7 @@ com\ntt\pojo\TinChoThue.class
 com\ntt\repository\TaiKhoanRepository.class
 com\ntt\configs\SecurityWebAppInitializer.class
 com\ntt\pojo\TieuChi.class
+com\ntt\configs\AppConfig.class
 com\ntt\pojo\BinhLuan_.class
 com\ntt\pojo\BaiViet_.class
 com\ntt\pojo\TieuChi_.class
@@ -20,12 +20,10 @@ com\ntt\pojo\NhaTro_.class
 com\ntt\pojo\BinhLuan.class
 com\ntt\repository\BaiVietRepository.class
 com\ntt\service\impl\TaiKhoanServiceImpl.class
-com\ntt\pojo\TaiKhoan.class
 com\ntt\pojo\TinTimTro_.class
 com\ntt\configs\HibernateConfig.class
 com\ntt\pojo\ThongBao.class
 com\ntt\pojo\BaiViet.class
-com\ntt\pojo\HinhAnh_.class
 com\ntt\pojo\TinChoThue_.class
 com\ntt\pojo\NhaTro.class
 com\ntt\service\TaiKhoanService.class
@@ -33,6 +31,6 @@ com\ntt\configs\TitlesConfig.class
 com\ntt\controllers\IndexContext.class
 com\ntt\service\BaiVietService.class
 com\ntt\pojo\TinTimTro.class
-com\ntt\pojo\HinhAnh.class
 com\ntt\configs\DispatcherServletInit.class
 com\ntt\controllers\DangKiController.class
+com\ntt\controllers\DangNhapController.class

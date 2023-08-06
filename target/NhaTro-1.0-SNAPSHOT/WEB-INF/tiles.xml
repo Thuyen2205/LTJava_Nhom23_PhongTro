@@ -22,9 +22,24 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
         <put-attribute name="content"
                        value="/WEB-INF/pages/index.jsp" />
     </definition>
+        <definition name="chutro" extends="baseLayout">
+        <put-attribute name="title" value="Trang chủ" />
+        <put-attribute name="content"
+                       value="/WEB-INF/pages/chutro.jsp" />
+    </definition>
     
-    <definition name="login"
-                template="/WEB-INF/pages/login.jsp">
+    <definition name="admin" extends="baseLayout">
+        <put-attribute name="title" value="Trang chủ" />
+        <put-attribute name="content"
+                       value="/WEB-INF/pages/admin.jsp" />
+    </definition>
+    
+    
+    
+  
+    
+    <definition name="dangnhap"
+                template="/WEB-INF/pages/dangnhap.jsp">
     </definition>
     
 

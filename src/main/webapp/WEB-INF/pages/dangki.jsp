@@ -18,11 +18,20 @@
         <form:form method="post" action="${action}" modelAttribute="user">
             <h1>Đăng kí</h1>
             <div class="input-box">
-                <input type="text" placeholder="Họ" required>
+                <form:input type="text" placeholder="Họ và tên" path="tenNguoiDung" />
             </div>
-             <div class="input-box">
-                <input type="text" placeholder="Tên" required>
-            </div>  
+            <div class="input-box">
+                <form:input type="text" placeholder="Email" path="email" />
+            </div>
+            <div class="input-box">
+                <form:input type="text" placeholder="Số điện thoại" path="sdt" />
+            </div>
+            <div class="input-box">
+                <form:input type="text" placeholder="Địa chỉ" path="diaChi"/>
+            </div>
+            <div class="input-box">
+                <form:input type="text" placeholder="Giới Tính" path="gioiTinh" />
+            </div>
             <div class="input-box">
                 <form:input type="text" placeholder="Tên tài khoản" path="tenTaiKhoan" />
             </div>
@@ -32,8 +41,9 @@
             <div class="input-box">
                 <form:input type="password" placeholder="Xác nhận lại mật khẩu" path="xacNhanMatKhau" />           
             </div>
-          
-
+            <div class="input-box">
+                <form:input type="text" placeholder="Loại tài khoản" path="loaiTaiKhoan" />
+            </div>
             <button class="btn" type="submit" >Đăng kí</button>
 
         </form:form>
