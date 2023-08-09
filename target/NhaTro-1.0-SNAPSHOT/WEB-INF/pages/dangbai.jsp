@@ -21,11 +21,16 @@
                 <form:input type="file" id="file" path="file" cssClass="form -control"/>
             </div>
             <div>
-                <label for="file">Thông tin bài viết: </label>
+                <label for="file">Tên bài viết </label>
                 <br></br>
-                <form:input type="text"  path="thongTin" cssClass="form -control"/>
+                <form:input type="text"  path="tenBai" cssClass="form -control"/>
             </div>
             <br></br>
+            <div>
+                <label for="file">Tác giả </label>
+                <br></br>
+                <form:input type="text"  path="tacGia" cssClass="form -control"/>
+            </div>
             <div class="form-group">
                 <input type="submit" value="Them Bai Viet" class="btn btn-danger"/>
             </div>

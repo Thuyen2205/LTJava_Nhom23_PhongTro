@@ -25,5 +25,10 @@ public class BaiVietServiceImpl implements BaiVietService{
     public List<BaiViet> getBaiViet() {
         return this.baiviet.getBaiViet();
     }
+
+    @Override
+    public boolean addBaiViet(BaiViet baiviet) {
+      return this.baiviet.addBaiViet(baiviet);
+    }
     
 }

@@ -23,10 +23,12 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
@@ -42,6 +44,20 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "BaiViet.findByTenBai", query = "SELECT b FROM BaiViet b WHERE b.tenBai = :tenBai"),
     @NamedQuery(name = "BaiViet.findByTacGia", query = "SELECT b FROM BaiViet b WHERE b.tacGia = :tacGia")})
 public class BaiViet implements Serializable {
+
+    /**
+     * @return the file
+     */
+    public MultipartFile getFile() {
+        return file;
+    }
+
+    /**
+     * @param file the file to set
+     */
+    public void setFile(MultipartFile file) {
+        this.file = file;
+    }
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -76,6 +92,9 @@ public class BaiViet implements Serializable {
     @JoinColumn(name = "id_nha_tro", referencedColumnName = "id")
     @ManyToOne
     private NhaTro idNhaTro;
+    
+    @Transient
+    private MultipartFile file;
 
     public BaiViet() {
     }

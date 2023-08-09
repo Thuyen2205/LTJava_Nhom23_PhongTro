@@ -6,6 +6,7 @@ package com.ntt.controllers;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
+import com.ntt.pojo.BaiViet;
 import com.ntt.pojo.TinChoThue;
 import java.io.IOException;
 import java.util.Map;
@@ -22,32 +23,32 @@ import org.springframework.web.bind.annotation.PostMapping;
  *
  * @author ThanhThuyen
  */
-
 @Controller
 public class BaiVietController {
+
     @Autowired
     private Cloudinary cloudinary;
-    
+
     @GetMapping("/dangbai")
-    public String list(Model model){
-        
-        model.addAttribute("baiviet", new TinChoThue());
+    public String list(Model model) {
+
+        model.addAttribute("baiviet", new BaiViet());
         return "dangbai";
-    
+
     }
-    
+
     @PostMapping("/dangbai")
-    public String add(@ModelAttribute(value="baiviet") TinChoThue baiviet ){
+    public String add(@ModelAttribute(value = "baiviet") BaiViet baiviet) {
         try {
-            Map r= this.cloudinary.uploader().upload(baiviet.getFile().getBytes(),
-                    ObjectUtils.asMap("resource_type","auto"));
-            baiviet.setHinhAnh(r.get("resoure_url").toString());
+             this.cloudinary.uploader().upload(baiviet.getFile().getBytes(),
+                    ObjectUtils.asMap("resource_type", "auto"));
+
             return "redirect:/";
         } catch (IOException ex) {
-            System.err.println("== ADD BaiViet =="+ex.getMessage());
+            System.err.println("== ADD BaiViet ==" + ex.getMessage());
         }
-        
+
         return "baiviet";
-    
+
     }
 }

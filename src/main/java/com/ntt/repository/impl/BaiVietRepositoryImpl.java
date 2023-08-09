@@ -5,9 +5,14 @@
 package com.ntt.repository.impl;
 
 import com.ntt.pojo.BaiViet;
+import com.ntt.pojo.NhaTro;
 import com.ntt.repository.BaiVietRepository;
 import java.util.List;
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
@@ -31,5 +36,19 @@ public class BaiVietRepositoryImpl implements BaiVietRepository{
         Query q=s.createQuery("From BaiViet");
         return q.getResultList();
     }
+
+    @Override
+    public boolean addBaiViet(BaiViet baiviet) {
+        Session s=this.factory.getObject().getCurrentSession();
+        try {
+            s.save(baiviet);
+            return true;
+        } catch (HibernateException e) {
+            System.err.println(e.getMessage());
+        }
+        return false;
+        
+    }
+
     
 }

@@ -66,7 +66,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
         http.logout().logoutSuccessUrl("/dangnhap");
         http.exceptionHandling().accessDeniedPage("/dangnhap?accessDenied");
         http.authorizeRequests().antMatchers("/").permitAll()
-                .antMatchers("/admin").access("hasRole('ROLE')");
+                .antMatchers("/admin").access("hasRole('ROLE_ADMIN')");
        
         http.csrf().disable();
         

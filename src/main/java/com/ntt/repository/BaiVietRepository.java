@@ -5,6 +5,7 @@
 package com.ntt.repository;
 
 import com.ntt.pojo.BaiViet;
+import com.ntt.pojo.NhaTro;
 import java.util.List;
 
 /**
@@ -13,4 +14,7 @@ import java.util.List;
  */
 public interface BaiVietRepository {
     List<BaiViet> getBaiViet();
+    boolean addBaiViet(BaiViet baiviet);
+   
+    
 }
