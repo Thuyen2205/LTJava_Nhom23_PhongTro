@@ -26,12 +26,7 @@
             <div class="input-box">
                 <form:input type="text" placeholder="Số điện thoại" path="sdt" />
             </div>
-            <div class="input-box">
-                <form:input type="text" placeholder="Địa chỉ" path="diaChi"/>
-            </div>
-            <div class="input-box">
-                <form:input type="text" placeholder="Giới Tính" path="gioiTinh" />
-            </div>
+
             <div class="input-box">
                 <form:input type="text" placeholder="Tên tài khoản" path="tenTaiKhoan" />
             </div>
@@ -41,9 +36,15 @@
             <div class="input-box">
                 <form:input type="password" placeholder="Xác nhận lại mật khẩu" path="xacNhanMatKhau" />           
             </div>
+
             <div class="input-box">
-                <form:input type="text" placeholder="Loại tài khoản" path="loaiTaiKhoan" />
+                <form:select class="role" name="role" id="role" path="idLoaiTaiKhoan">
+                    <c:forEach items="${user_role}" var="c" >
+                        <option value="${c.id}" selected>${c.tenLoaiTaiKhoan}</option>
+                    </c:forEach>
+                </form:select>
             </div>
+
             <button class="btn" type="submit" >Đăng kí</button>
 
         </form:form>

@@ -8,10 +8,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <body>
+<!--    <body>
         <c:forEach items="${baiviet}" var="p">
-            Bài viết thứ ${p.id} -${p.ngayDang}- ${p.tenBai}- ${p.tacGia} 
+            Bài viết thứ ${p.id} -${p.ngayDang}- ${p.tenBai}
             <br></br>
         </c:forEach>
-    </body>
+    </body>-->
 </html>

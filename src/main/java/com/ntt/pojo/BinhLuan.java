@@ -19,7 +19,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -43,19 +42,17 @@ public class BinhLuan implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
+    @Size(max = 1000)
     @Column(name = "noi_dung")
     private String noiDung;
     @Column(name = "ngay_binh_luan")
     @Temporal(TemporalType.TIMESTAMP)
     private Date ngayBinhLuan;
     @JoinColumn(name = "id_bai_viet", referencedColumnName = "id")
-    @ManyToOne(optional = false)
+    @ManyToOne
     private BaiViet idBaiViet;
     @JoinColumn(name = "id_nguoi_dung", referencedColumnName = "id")
-    @ManyToOne(optional = false)
+    @ManyToOne
     private NguoiDung idNguoiDung;
 
     public BinhLuan() {
@@ -63,11 +60,6 @@ public class BinhLuan implements Serializable {
 
     public BinhLuan(Integer id) {
         this.id = id;
-    }
-
-    public BinhLuan(Integer id, String noiDung) {
-        this.id = id;
-        this.noiDung = noiDung;
     }
 
     public Integer getId() {

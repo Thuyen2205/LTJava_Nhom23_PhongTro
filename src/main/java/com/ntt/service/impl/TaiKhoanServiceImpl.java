@@ -4,6 +4,7 @@
  */
 package com.ntt.service.impl;
 
+import com.ntt.pojo.LoaiTaiKhoan;
 import com.ntt.pojo.NguoiDung;
 import com.ntt.repository.TaiKhoanRepository;
 import com.ntt.service.TaiKhoanService;
@@ -53,10 +54,18 @@ public class TaiKhoanServiceImpl implements TaiKhoanService{
        NguoiDung taikhoan=taikhoans.get(0);
        
        Set<GrantedAuthority> auth= new HashSet<>();
-       auth.add(new SimpleGrantedAuthority(taikhoan.getLoaiTaiKhoan()));
+       auth.add(new SimpleGrantedAuthority(taikhoan.getIdLoaiTaiKhoan().getTenLoaiTaiKhoan()));
        
        return new org.springframework.security.core.userdetails.User(taikhoan.getTenTaiKhoan(),taikhoan.getMatKhau(),auth);
        
     }
-    
+
+    @Override
+    public LoaiTaiKhoan getLoaiTaiKhoan(String tenLoaiTaiKhoan) {
+      return this.taikhoanRepository.getLoaiTaiKhoan(tenLoaiTaiKhoan);
+    }
+//      @Override
+//    public UserRole getRoleBenhNhan(String role) {
+//        return this.taiKhoanRepository.getRoleBenhNhan(role);
+//    }
 }

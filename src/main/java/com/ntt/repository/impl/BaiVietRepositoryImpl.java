@@ -5,7 +5,7 @@
 package com.ntt.repository.impl;
 
 import com.ntt.pojo.BaiViet;
-import com.ntt.pojo.NhaTro;
+
 import com.ntt.repository.BaiVietRepository;
 import java.util.List;
 import javax.persistence.Query;
@@ -37,18 +37,18 @@ public class BaiVietRepositoryImpl implements BaiVietRepository{
         return q.getResultList();
     }
 
-    @Override
-    public boolean addBaiViet(BaiViet baiviet) {
-        Session s=this.factory.getObject().getCurrentSession();
-        try {
-            s.save(baiviet);
-            return true;
-        } catch (HibernateException e) {
-            System.err.println(e.getMessage());
-        }
-        return false;
-        
-    }
+//    @Override
+//    public boolean addBaiViet(BaiViet baiviet) {
+//        Session s=this.factory.getObject().getCurrentSession();
+//        try {
+//            s.save(baiviet);
+//            return true;
+//        } catch (HibernateException e) {
+//            System.err.println(e.getMessage());
+//        }
+//        return false;
+//        
+//    }
 
     
 }

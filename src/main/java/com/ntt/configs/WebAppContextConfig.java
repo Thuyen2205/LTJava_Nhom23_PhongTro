@@ -6,9 +6,11 @@ package com.ntt.configs;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
+import com.ntt.formatter.LoaiTaiKhoanFormatter;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.format.FormatterRegistry;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
@@ -72,5 +74,9 @@ public class WebAppContextConfig implements WebMvcConfigurer {
         
         return c;
     }
-
+    @Override
+    public void addFormatters(FormatterRegistry registry){
+        registry.addFormatter(new LoaiTaiKhoanFormatter());
+    
+    }
 }

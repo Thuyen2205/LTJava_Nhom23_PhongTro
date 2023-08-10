@@ -7,7 +7,6 @@ package com.ntt.controllers;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import com.ntt.pojo.BaiViet;
-import com.ntt.pojo.TinChoThue;
 import java.io.IOException;
 import java.util.Map;
 import java.util.logging.Level;

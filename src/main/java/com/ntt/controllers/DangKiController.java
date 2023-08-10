@@ -5,6 +5,7 @@
 package com.ntt.controllers;
 
 import com.ntt.pojo.NguoiDung;
+import com.ntt.service.LoaiTaiKhoanService;
 import com.ntt.service.TaiKhoanService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
@@ -24,20 +25,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Transactional
 public class DangKiController {
 
-    
     @Autowired
     private TaiKhoanService taikhoanDetailsService;
 
+    @Autowired
+    private LoaiTaiKhoanService loaiTaiKhoansv;
 //    @RequestMapping("/dangki")
 //    public String dangki() {
 //        return "dangki";
 //    }
-
     @GetMapping("/dangki")
     public String dangkiView(Model model) {
         model.addAttribute("user", new NguoiDung());
         return "dangki";
 
+    }
+
+    @ModelAttribute
+    public void commonAttr(Model model) {
+        model.addAttribute("user_role", this.loaiTaiKhoansv.getLoaiTaiKhoan());
     }
 
     @PostMapping("/dangki")

@@ -4,6 +4,7 @@
  */
 package com.ntt.service;
 
+import com.ntt.pojo.LoaiTaiKhoan;
 import com.ntt.pojo.NguoiDung;
 import java.util.List;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -17,5 +18,6 @@ public interface TaiKhoanService extends UserDetailsService {
     boolean addTaiKhoan(NguoiDung nguoidung);
 
     List<NguoiDung> getTaiKhoan(String username);
+    LoaiTaiKhoan getLoaiTaiKhoan(String tenLoaiTaiKhoan);
 
 }

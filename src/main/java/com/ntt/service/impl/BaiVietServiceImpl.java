@@ -26,9 +26,9 @@ public class BaiVietServiceImpl implements BaiVietService{
         return this.baiviet.getBaiViet();
     }
 
-    @Override
-    public boolean addBaiViet(BaiViet baiviet) {
-      return this.baiviet.addBaiViet(baiviet);
-    }
+//    @Override
+//    public boolean addBaiViet(BaiViet baiviet) {
+//      return this.baiviet.addBaiViet(baiviet);
+//    }
     
 }

@@ -16,7 +16,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -30,8 +29,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "ThongBao.findAll", query = "SELECT t FROM ThongBao t"),
     @NamedQuery(name = "ThongBao.findById", query = "SELECT t FROM ThongBao t WHERE t.id = :id"),
-    @NamedQuery(name = "ThongBao.findByNoiDung", query = "SELECT t FROM ThongBao t WHERE t.noiDung = :noiDung"),
-    @NamedQuery(name = "ThongBao.findByNgayThongBao", query = "SELECT t FROM ThongBao t WHERE t.ngayThongBao = :ngayThongBao")})
+    @NamedQuery(name = "ThongBao.findByNoiDung", query = "SELECT t FROM ThongBao t WHERE t.noiDung = :noiDung")})
 public class ThongBao implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -40,34 +38,21 @@ public class ThongBao implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
+    @Size(max = 45)
     @Column(name = "noi_dung")
     private String noiDung;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
-    @Column(name = "ngay_thong_bao")
-    private String ngayThongBao;
+    @JoinColumn(name = "id_bai_viet", referencedColumnName = "id")
+    @ManyToOne
+    private BaiViet idBaiViet;
     @JoinColumn(name = "id_nguoi_dung", referencedColumnName = "id")
-    @ManyToOne(optional = false)
+    @ManyToOne
     private NguoiDung idNguoiDung;
-    @JoinColumn(name = "id_cho_thue", referencedColumnName = "id_cho_thue")
-    @ManyToOne(optional = false)
-    private TinChoThue idChoThue;
 
     public ThongBao() {
     }
 
     public ThongBao(Integer id) {
         this.id = id;
-    }
-
-    public ThongBao(Integer id, String noiDung, String ngayThongBao) {
-        this.id = id;
-        this.noiDung = noiDung;
-        this.ngayThongBao = ngayThongBao;
     }
 
     public Integer getId() {
@@ -86,12 +71,12 @@ public class ThongBao implements Serializable {
         this.noiDung = noiDung;
     }
 
-    public String getNgayThongBao() {
-        return ngayThongBao;
+    public BaiViet getIdBaiViet() {
+        return idBaiViet;
     }
 
-    public void setNgayThongBao(String ngayThongBao) {
-        this.ngayThongBao = ngayThongBao;
+    public void setIdBaiViet(BaiViet idBaiViet) {
+        this.idBaiViet = idBaiViet;
     }
 
     public NguoiDung getIdNguoiDung() {
@@ -100,14 +85,6 @@ public class ThongBao implements Serializable {
 
     public void setIdNguoiDung(NguoiDung idNguoiDung) {
         this.idNguoiDung = idNguoiDung;
-    }
-
-    public TinChoThue getIdChoThue() {
-        return idChoThue;
-    }
-
-    public void setIdChoThue(TinChoThue idChoThue) {
-        this.idChoThue = idChoThue;
     }
 
     @Override

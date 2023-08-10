@@ -4,6 +4,7 @@
  */
 package com.ntt.repository.impl;
 
+import com.ntt.pojo.LoaiTaiKhoan;
 import com.ntt.pojo.NguoiDung;
 import com.ntt.repository.TaiKhoanRepository;
 import java.util.List;
@@ -59,5 +60,14 @@ public class TaiKhoanRepositoryImpl implements TaiKhoanRepository{
         Query q = s.createQuery(query);
         return q.getResultList();
     }
-    
+
+    @Override
+    public LoaiTaiKhoan getLoaiTaiKhoan(String tenLoaiTaiKhoan) {
+        Session session=this.sessionFactory.getObject().getCurrentSession();
+        Query q=session.createQuery("From LoaiTaiKhoan Where tenLoaiTaiKhoan = :tenLoaiTaiKhoan");
+        q.setParameter("tenLoaiTaiKhoan", tenLoaiTaiKhoan);
+        return (LoaiTaiKhoan) q.getSingleResult();
+       
+    }
+
 }

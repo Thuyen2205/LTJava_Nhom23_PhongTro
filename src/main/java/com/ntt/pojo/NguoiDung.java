@@ -7,21 +7,22 @@ package com.ntt.pojo;
 import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
@@ -36,89 +37,88 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "NguoiDung.findByTenNguoiDung", query = "SELECT n FROM NguoiDung n WHERE n.tenNguoiDung = :tenNguoiDung"),
     @NamedQuery(name = "NguoiDung.findByEmail", query = "SELECT n FROM NguoiDung n WHERE n.email = :email"),
     @NamedQuery(name = "NguoiDung.findBySdt", query = "SELECT n FROM NguoiDung n WHERE n.sdt = :sdt"),
-    @NamedQuery(name = "NguoiDung.findByDiaChi", query = "SELECT n FROM NguoiDung n WHERE n.diaChi = :diaChi"),
-    @NamedQuery(name = "NguoiDung.findByGioiTinh", query = "SELECT n FROM NguoiDung n WHERE n.gioiTinh = :gioiTinh"),
     @NamedQuery(name = "NguoiDung.findByTenTaiKhoan", query = "SELECT n FROM NguoiDung n WHERE n.tenTaiKhoan = :tenTaiKhoan"),
     @NamedQuery(name = "NguoiDung.findByMatKhau", query = "SELECT n FROM NguoiDung n WHERE n.matKhau = :matKhau"),
-    @NamedQuery(name = "NguoiDung.findByLoaiTaiKhoan", query = "SELECT n FROM NguoiDung n WHERE n.loaiTaiKhoan = :loaiTaiKhoan")})
+    @NamedQuery(name = "NguoiDung.findByAvatar", query = "SELECT n FROM NguoiDung n WHERE n.avatar = :avatar"),
+    @NamedQuery(name = "NguoiDung.findByHinhAnh", query = "SELECT n FROM NguoiDung n WHERE n.hinhAnh = :hinhAnh")})
 public class NguoiDung implements Serializable {
-    
-    public static final String Admin="ROLE_ADMIN";
-    public static final String KhachHang="ROLE_KHACHHANG";
-    public static final String ChuTro="ROLE_CHUTRO";
-    
+
+    /**
+     * @param xacNhanMatKhau the xacNhanMatKhau to set
+     */
+    public void setXacNhanMatKhau(String xacNhanMatKhau) {
+        this.xacNhanMatKhau = xacNhanMatKhau;
+    }
+
+    /**
+     * @return the xacNhanMatKhau
+     */
+    public String getXacNhanMatKhau() {
+        return xacNhanMatKhau;
+    }
+
+    /**
+     * @return the file
+     */
+    public MultipartFile getFile() {
+        return file;
+    }
+
+    /**
+     * @param file the file to set
+     */
+    public void setFile(MultipartFile file) {
+        this.file = file;
+    }
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
+    @Size(max = 45)
     @Column(name = "ten_nguoi_dung")
     private String tenNguoiDung;
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
+    @Size(max = 45)
     @Column(name = "email")
     private String email;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
+    @Size(max = 45)
     @Column(name = "sdt")
     private String sdt;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
-    @Column(name = "dia_chi")
-    private String diaChi;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
-    @Column(name = "gioi_tinh")
-    private String gioiTinh;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
+    @Size(max = 45)
     @Column(name = "ten_tai_khoan")
     private String tenTaiKhoan;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 100)
+    @Size(max = 200)
     @Column(name = "mat_khau")
     private String matKhau;
-    @Size(max = 45)
-    @Column(name = "loai_tai_khoan")
-    private String loaiTaiKhoan;
+    @Size(max = 500)
+    @Column(name = "avatar")
+    private String avatar;
+    @Size(max = 500)
+    @Column(name = "hinh_anh")
+    private String hinhAnh;
+    @OneToMany(mappedBy = "idNguoiDung")
+    private Set<BinhLuan> binhLuanSet;
+    @JoinColumn(name = "id_loai_tai_khoan", referencedColumnName = "id")
+    @ManyToOne
+    private LoaiTaiKhoan idLoaiTaiKhoan;
+    @OneToMany(mappedBy = "idNguoiDung")
+    private Set<ThongBao> thongBaoSet;
+    @OneToMany(mappedBy = "idNguoiDung")
+    private Set<BaiViet> baiVietSet;
+    @Transient
+    private MultipartFile file;
+    
     @Transient
     private String xacNhanMatKhau;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idNguoiDung")
-    private Set<BinhLuan> binhLuanSet;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idNguoiDung")
-    private Set<TieuChi> tieuChiSet;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idNguoiDung")
-    private Set<ThongBao> thongBaoSet;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idNguoiDung")
-    private Set<BaiViet> baiVietSet;
 
     public NguoiDung() {
     }
 
     public NguoiDung(Integer id) {
         this.id = id;
-    }
-
-    public NguoiDung(Integer id, String tenNguoiDung, String email, String sdt, String diaChi, String gioiTinh, String tenTaiKhoan, String matKhau) {
-        this.id = id;
-        this.tenNguoiDung = tenNguoiDung;
-        this.email = email;
-        this.sdt = sdt;
-        this.diaChi = diaChi;
-        this.gioiTinh = gioiTinh;
-        this.tenTaiKhoan = tenTaiKhoan;
-        this.matKhau = matKhau;
     }
 
     public Integer getId() {
@@ -153,22 +153,6 @@ public class NguoiDung implements Serializable {
         this.sdt = sdt;
     }
 
-    public String getDiaChi() {
-        return diaChi;
-    }
-
-    public void setDiaChi(String diaChi) {
-        this.diaChi = diaChi;
-    }
-
-    public String getGioiTinh() {
-        return gioiTinh;
-    }
-
-    public void setGioiTinh(String gioiTinh) {
-        this.gioiTinh = gioiTinh;
-    }
-
     public String getTenTaiKhoan() {
         return tenTaiKhoan;
     }
@@ -185,12 +169,20 @@ public class NguoiDung implements Serializable {
         this.matKhau = matKhau;
     }
 
-    public String getLoaiTaiKhoan() {
-        return loaiTaiKhoan;
+    public String getAvatar() {
+        return avatar;
     }
 
-    public void setLoaiTaiKhoan(String loaiTaiKhoan) {
-        this.loaiTaiKhoan = loaiTaiKhoan;
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public String getHinhAnh() {
+        return hinhAnh;
+    }
+
+    public void setHinhAnh(String hinhAnh) {
+        this.hinhAnh = hinhAnh;
     }
 
     @XmlTransient
@@ -202,13 +194,12 @@ public class NguoiDung implements Serializable {
         this.binhLuanSet = binhLuanSet;
     }
 
-    @XmlTransient
-    public Set<TieuChi> getTieuChiSet() {
-        return tieuChiSet;
+    public LoaiTaiKhoan getIdLoaiTaiKhoan() {
+        return idLoaiTaiKhoan;
     }
 
-    public void setTieuChiSet(Set<TieuChi> tieuChiSet) {
-        this.tieuChiSet = tieuChiSet;
+    public void setIdLoaiTaiKhoan(LoaiTaiKhoan idLoaiTaiKhoan) {
+        this.idLoaiTaiKhoan = idLoaiTaiKhoan;
     }
 
     @XmlTransient
@@ -252,20 +243,6 @@ public class NguoiDung implements Serializable {
     @Override
     public String toString() {
         return "com.ntt.pojo.NguoiDung[ id=" + id + " ]";
-    }
-
-    /**
-     * @return the xacNhanMatKhau
-     */
-    public String getXacNhanMatKhau() {
-        return xacNhanMatKhau;
-    }
-
-    /**
-     * @param xacNhanMatKhau the xacNhanMatKhau to set
-     */
-    public void setXacNhanMatKhau(String xacNhanMatKhau) {
-        this.xacNhanMatKhau = xacNhanMatKhau;
     }
     
 }

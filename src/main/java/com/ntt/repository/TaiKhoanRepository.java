@@ -4,6 +4,7 @@
  */
 package com.ntt.repository;
 
+import com.ntt.pojo.LoaiTaiKhoan;
 import com.ntt.pojo.NguoiDung;
 import java.util.List;
 
@@ -14,4 +15,5 @@ import java.util.List;
 public interface TaiKhoanRepository {
     boolean addTaiKhoan(NguoiDung nguoidung);
     List<NguoiDung> getTaiKhoan(String username);
+    LoaiTaiKhoan getLoaiTaiKhoan (String tenLoaiTaiKhoan);
 }

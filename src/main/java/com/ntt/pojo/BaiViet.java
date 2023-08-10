@@ -8,7 +8,6 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,12 +18,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -40,9 +37,15 @@ import org.springframework.web.multipart.MultipartFile;
 @NamedQueries({
     @NamedQuery(name = "BaiViet.findAll", query = "SELECT b FROM BaiViet b"),
     @NamedQuery(name = "BaiViet.findById", query = "SELECT b FROM BaiViet b WHERE b.id = :id"),
+    @NamedQuery(name = "BaiViet.findByTenBaiViet", query = "SELECT b FROM BaiViet b WHERE b.tenBaiViet = :tenBaiViet"),
+    @NamedQuery(name = "BaiViet.findByHinhAnh", query = "SELECT b FROM BaiViet b WHERE b.hinhAnh = :hinhAnh"),
+    @NamedQuery(name = "BaiViet.findByNoiDung", query = "SELECT b FROM BaiViet b WHERE b.noiDung = :noiDung"),
+    @NamedQuery(name = "BaiViet.findByPhamViCanTim", query = "SELECT b FROM BaiViet b WHERE b.phamViCanTim = :phamViCanTim"),
     @NamedQuery(name = "BaiViet.findByNgayDang", query = "SELECT b FROM BaiViet b WHERE b.ngayDang = :ngayDang"),
-    @NamedQuery(name = "BaiViet.findByTenBai", query = "SELECT b FROM BaiViet b WHERE b.tenBai = :tenBai"),
-    @NamedQuery(name = "BaiViet.findByTacGia", query = "SELECT b FROM BaiViet b WHERE b.tacGia = :tacGia")})
+    @NamedQuery(name = "BaiViet.findBySoNguoi", query = "SELECT b FROM BaiViet b WHERE b.soNguoi = :soNguoi"),
+    @NamedQuery(name = "BaiViet.findByGiaThue", query = "SELECT b FROM BaiViet b WHERE b.giaThue = :giaThue"),
+    @NamedQuery(name = "BaiViet.findByDienTich", query = "SELECT b FROM BaiViet b WHERE b.dienTich = :dienTich"),
+    @NamedQuery(name = "BaiViet.findByDiaChiCt", query = "SELECT b FROM BaiViet b WHERE b.diaChiCt = :diaChiCt")})
 public class BaiViet implements Serializable {
 
     /**
@@ -65,49 +68,48 @@ public class BaiViet implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Basic(optional = false)
-    @NotNull
+    @Size(max = 45)
+    @Column(name = "ten_bai_viet")
+    private String tenBaiViet;
+    @Size(max = 500)
+    @Column(name = "hinh_anh")
+    private String hinhAnh;
+    @Size(max = 1000)
+    @Column(name = "noi_dung")
+    private String noiDung;
+    @Size(max = 100)
+    @Column(name = "pham_vi_can_tim")
+    private String phamViCanTim;
     @Column(name = "ngay_dang")
     @Temporal(TemporalType.TIMESTAMP)
     private Date ngayDang;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
-    @Column(name = "ten_bai")
-    private String tenBai;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 45)
-    @Column(name = "tac_gia")
-    private String tacGia;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "baiViet")
-    private TinTimTro tinTimTro;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idBaiViet")
+    @Column(name = "so_nguoi")
+    private Integer soNguoi;
+    @Column(name = "gia_thue")
+    private Long giaThue;
+    @Size(max = 45)
+    @Column(name = "dien_tich")
+    private String dienTich;
+    @Size(max = 45)
+    @Column(name = "dia_chi_ct")
+    private String diaChiCt;
+    @OneToMany(mappedBy = "idBaiViet")
     private Set<BinhLuan> binhLuanSet;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "baiViet")
-    private TinChoThue tinChoThue;
-    @JoinColumn(name = "id_nguoi_dung", referencedColumnName = "id")
-    @ManyToOne(optional = false)
-    private NguoiDung idNguoiDung;
-    @JoinColumn(name = "id_nha_tro", referencedColumnName = "id")
+    @OneToMany(mappedBy = "idBaiViet")
+    private Set<ThongBao> thongBaoSet;
+    @JoinColumn(name = "loai_bai_viet", referencedColumnName = "id")
     @ManyToOne
-    private NhaTro idNhaTro;
-    
+    private LoaiBaiViet loaiBaiViet;
+    @JoinColumn(name = "id_nguoi_dung", referencedColumnName = "id")
+    @ManyToOne
+    private NguoiDung idNguoiDung;
     @Transient
     private MultipartFile file;
-
     public BaiViet() {
     }
 
     public BaiViet(Integer id) {
         this.id = id;
-    }
-
-    public BaiViet(Integer id, Date ngayDang, String tenBai, String tacGia) {
-        this.id = id;
-        this.ngayDang = ngayDang;
-        this.tenBai = tenBai;
-        this.tacGia = tacGia;
     }
 
     public Integer getId() {
@@ -118,6 +120,38 @@ public class BaiViet implements Serializable {
         this.id = id;
     }
 
+    public String getTenBaiViet() {
+        return tenBaiViet;
+    }
+
+    public void setTenBaiViet(String tenBaiViet) {
+        this.tenBaiViet = tenBaiViet;
+    }
+
+    public String getHinhAnh() {
+        return hinhAnh;
+    }
+
+    public void setHinhAnh(String hinhAnh) {
+        this.hinhAnh = hinhAnh;
+    }
+
+    public String getNoiDung() {
+        return noiDung;
+    }
+
+    public void setNoiDung(String noiDung) {
+        this.noiDung = noiDung;
+    }
+
+    public String getPhamViCanTim() {
+        return phamViCanTim;
+    }
+
+    public void setPhamViCanTim(String phamViCanTim) {
+        this.phamViCanTim = phamViCanTim;
+    }
+
     public Date getNgayDang() {
         return ngayDang;
     }
@@ -126,28 +160,36 @@ public class BaiViet implements Serializable {
         this.ngayDang = ngayDang;
     }
 
-    public String getTenBai() {
-        return tenBai;
+    public Integer getSoNguoi() {
+        return soNguoi;
     }
 
-    public void setTenBai(String tenBai) {
-        this.tenBai = tenBai;
+    public void setSoNguoi(Integer soNguoi) {
+        this.soNguoi = soNguoi;
     }
 
-    public String getTacGia() {
-        return tacGia;
+    public Long getGiaThue() {
+        return giaThue;
     }
 
-    public void setTacGia(String tacGia) {
-        this.tacGia = tacGia;
+    public void setGiaThue(Long giaThue) {
+        this.giaThue = giaThue;
     }
 
-    public TinTimTro getTinTimTro() {
-        return tinTimTro;
+    public String getDienTich() {
+        return dienTich;
     }
 
-    public void setTinTimTro(TinTimTro tinTimTro) {
-        this.tinTimTro = tinTimTro;
+    public void setDienTich(String dienTich) {
+        this.dienTich = dienTich;
+    }
+
+    public String getDiaChiCt() {
+        return diaChiCt;
+    }
+
+    public void setDiaChiCt(String diaChiCt) {
+        this.diaChiCt = diaChiCt;
     }
 
     @XmlTransient
@@ -159,12 +201,21 @@ public class BaiViet implements Serializable {
         this.binhLuanSet = binhLuanSet;
     }
 
-    public TinChoThue getTinChoThue() {
-        return tinChoThue;
+    @XmlTransient
+    public Set<ThongBao> getThongBaoSet() {
+        return thongBaoSet;
     }
 
-    public void setTinChoThue(TinChoThue tinChoThue) {
-        this.tinChoThue = tinChoThue;
+    public void setThongBaoSet(Set<ThongBao> thongBaoSet) {
+        this.thongBaoSet = thongBaoSet;
+    }
+
+    public LoaiBaiViet getLoaiBaiViet() {
+        return loaiBaiViet;
+    }
+
+    public void setLoaiBaiViet(LoaiBaiViet loaiBaiViet) {
+        this.loaiBaiViet = loaiBaiViet;
     }
 
     public NguoiDung getIdNguoiDung() {
@@ -173,14 +224,6 @@ public class BaiViet implements Serializable {
 
     public void setIdNguoiDung(NguoiDung idNguoiDung) {
         this.idNguoiDung = idNguoiDung;
-    }
-
-    public NhaTro getIdNhaTro() {
-        return idNhaTro;
-    }
-
-    public void setIdNhaTro(NhaTro idNhaTro) {
-        this.idNhaTro = idNhaTro;
     }
 
     @Override
