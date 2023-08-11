@@ -40,12 +40,14 @@
                 <br></br>
                 <form:input type="text"  path="noiDung" cssClass="form -control"/>
             </div>
-            
-            <div>
+                <c:if test="${nguoidung.idLoaiTaiKhoan.id==2}">
+                      <div>
                 <label for="file">Pham vi can tim</label>
                 <br></br>
                 <form:input type="text"  path="phamViCanTim" cssClass="form -control"/>
             </div>
+                </c:if>
+          
             
             <div>
                 <label for="file">So nguoi</label>

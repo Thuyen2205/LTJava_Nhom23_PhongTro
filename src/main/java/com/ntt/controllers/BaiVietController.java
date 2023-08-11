@@ -9,6 +9,7 @@ import com.cloudinary.utils.ObjectUtils;
 import com.ntt.pojo.BaiViet;
 import com.ntt.service.BaiVietService;
 import com.ntt.service.LoaiBaiVietService;
+import com.ntt.service.TaiKhoanService;
 import java.io.IOException;
 import java.util.Map;
 import java.util.logging.Level;
@@ -36,9 +37,12 @@ public class BaiVietController {
     private BaiVietService baivietService;
     @Autowired
     private LoaiBaiVietService loaiBaiViet;
+    @Autowired
+    private TaiKhoanService taikhoan;
 
     @GetMapping("/dangbai")
     public String list(Model model, Authentication authen) {
+        model.addAttribute("nguoidung",this.taikhoan.getTaiKhoan(authen.getName()).get(0));
         model.addAttribute("baiviet_role", this.loaiBaiViet.getLoaiBaiViet());
         model.addAttribute("baiviet", new BaiViet());
         return "dangbai";

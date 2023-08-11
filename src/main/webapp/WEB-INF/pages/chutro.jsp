@@ -5,13 +5,12 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
+
     <body>
-    <c:forEach items="${baiviet}" var="p">
-        Chủ trọ ${p.id} -${p.tenBaiViet}- ${p.noiDung}
-        <br></br>
-    </c:forEach>
-</body>
+  
+    <h1>Chu tro</h1>
+    </body>
 </html>
