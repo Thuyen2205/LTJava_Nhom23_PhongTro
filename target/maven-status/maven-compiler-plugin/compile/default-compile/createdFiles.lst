@@ -12,6 +12,7 @@ com\ntt\repository\impl\TaiKhoanRepositoryImpl.class
 com\ntt\service\LoaiTaiKhoanService.class
 com\ntt\controllers\BaiVietController.class
 com\ntt\repository\TaiKhoanRepository.class
+com\ntt\service\impl\LoaiBaiVietServiceImpl.class
 com\ntt\repository\LoaiTaiKhoanRepository.class
 com\ntt\formatter\LoaiTaiKhoanFormatter.class
 com\ntt\configs\SecurityWebAppInitializer.class
@@ -21,6 +22,8 @@ com\ntt\pojo\BaiViet_.class
 com\ntt\pojo\BinhLuan.class
 com\ntt\repository\BaiVietRepository.class
 com\ntt\service\impl\TaiKhoanServiceImpl.class
+com\ntt\service\LoaiBaiVietService.class
+com\ntt\formatter\LoaiBaiVietFormatter.class
 com\ntt\pojo\LoaiBaiViet.class
 com\ntt\configs\HibernateConfig.class
 com\ntt\pojo\ThongBao.class
@@ -32,7 +35,9 @@ com\ntt\configs\TitlesConfig.class
 com\ntt\controllers\IndexContext.class
 com\ntt\service\BaiVietService.class
 com\ntt\pojo\LoaiBaiViet_.class
+com\ntt\repository\impl\LoaiBaiVietRepositoryImpl.class
 com\ntt\pojo\LoaiTaiKhoan.class
+com\ntt\repository\LoaiBaiVietRepository.class
 com\ntt\configs\DispatcherServletInit.class
 com\ntt\controllers\DangKiController.class
 com\ntt\controllers\DangNhapController.class

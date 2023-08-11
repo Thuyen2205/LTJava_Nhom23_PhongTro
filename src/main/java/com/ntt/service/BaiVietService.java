@@ -11,7 +11,11 @@ import java.util.List;
  *
  * @author ThanhThuyen
  */
-public interface BaiVietService {
+public interface BaiVietService  {
+
     List<BaiViet> getBaiViet();
-//    boolean addBaiViet(BaiViet baiviet);
+
+    List<BaiViet> getBaiViet(String tenBaiViet);
+    BaiViet loadBaiViet(String tenBaiViet);
+    boolean addBaiViet(BaiViet baiviet);
 }

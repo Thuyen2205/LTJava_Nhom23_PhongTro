@@ -6,6 +6,7 @@ package com.ntt.repository;
 
 import com.ntt.pojo.BaiViet;
 import com.ntt.pojo.LoaiTaiKhoan;
+import com.ntt.pojo.NguoiDung;
 import java.util.List;
 
 /**
@@ -14,4 +15,5 @@ import java.util.List;
  */
 public interface LoaiTaiKhoanRepository {
     List<LoaiTaiKhoan> getLoaiTaiKhoan();
+   
 }

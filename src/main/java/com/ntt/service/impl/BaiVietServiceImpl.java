@@ -4,11 +4,24 @@
  */
 package com.ntt.service.impl;
 
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
 import com.ntt.pojo.BaiViet;
+import com.ntt.pojo.LoaiBaiViet;
+import com.ntt.pojo.NguoiDung;
 import com.ntt.repository.BaiVietRepository;
+import com.ntt.repository.LoaiBaiVietRepository;
+import com.ntt.repository.TaiKhoanRepository;
 import com.ntt.service.BaiVietService;
+import java.io.IOException;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 /**
@@ -17,18 +30,55 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class BaiVietServiceImpl implements BaiVietService{
-    
+    @Autowired
+    private Cloudinary cloudinary;
     @Autowired
     private BaiVietRepository baiviet;
+    @Autowired
+    private TaiKhoanRepository taikhoan;
+    @Autowired
+    private LoaiBaiVietRepository loaiBaiViet;
     
     @Override
     public List<BaiViet> getBaiViet() {
         return this.baiviet.getBaiViet();
     }
 
-//    @Override
-//    public boolean addBaiViet(BaiViet baiviet) {
-//      return this.baiviet.addBaiViet(baiviet);
-//    }
+    @Override
+    public boolean addBaiViet(BaiViet baiviet) {
+         try {
+                Map res = this.cloudinary.uploader().upload(baiviet.getFile().getBytes(),
+                        ObjectUtils.asMap("resource_type", "auto"));
+                baiviet.setHinhAnh(res.get("secure_url").toString());
+                NguoiDung b = this.taikhoan.getTaiKhoan(baiviet.getTenNguoiDangBai().toString()).get(0);
+                baiviet.setIdNguoiDung(b);
+//                LoaiBaiViet loaiBai=loaiBaiViet.getLoaiBaiViet().get(0);
+//                baiviet.setLoaiBaiViet(loaiBai);
+                
+            } catch (IOException ex) {
+                System.err.println("== ADD BaiViet ==" + ex.getMessage());
+            }
+      return this.baiviet.addBaiViet(baiviet);
+    }
+
+    @Override
+    public List<BaiViet> getBaiViet(String tenBaiViet) {
+       return this.baiviet.getBaiViet(tenBaiViet);
+    }
+
+    @Override
+    public BaiViet loadBaiViet(String tenBaiViet) {
+        List<BaiViet> baiviets=this.getBaiViet(tenBaiViet);
+       
+       if(baiviets.isEmpty())
+       {
+           throw new UsernameNotFoundException("Bài Viết Khong Ton Tại!!!");
+       }
+       BaiViet baiviet=baiviets.get(0);
+       
+       baiviet.getIdNguoiDung().getTenNguoiDung();
+       
+       return new BaiViet();
+    }
     
 }

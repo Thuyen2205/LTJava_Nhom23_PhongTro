@@ -15,7 +15,7 @@
 
 <body>
     <div class="wrapper">
-        <form:form method="post" action="${action}" modelAttribute="user">
+        <form:form method="post" action="${action}" modelAttribute="user"  enctype="multipart/form-data">
             <h1>Đăng kí</h1>
             <div class="input-box">
                 <form:input type="text" placeholder="Họ và tên" path="tenNguoiDung" />
@@ -36,14 +36,16 @@
             <div class="input-box">
                 <form:input type="password" placeholder="Xác nhận lại mật khẩu" path="xacNhanMatKhau" />           
             </div>
-
-            <div class="input-box">
+            <div class="input-box btn-danger">
                 <form:select class="role" name="role" id="role" path="idLoaiTaiKhoan">
                     <c:forEach items="${user_role}" var="c" >
                         <option value="${c.id}" selected>${c.tenLoaiTaiKhoan}</option>
                     </c:forEach>
                 </form:select>
             </div>
+            
+            <form:input type="file" id="file" path="file" placeholder="Upload Avatar"/>
+
 
             <button class="btn" type="submit" >Đăng kí</button>
 

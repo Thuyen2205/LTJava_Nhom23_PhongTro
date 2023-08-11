@@ -49,6 +49,20 @@ import org.springframework.web.multipart.MultipartFile;
 public class BaiViet implements Serializable {
 
     /**
+     * @return the tenNguoiDangBai
+     */
+    public String getTenNguoiDangBai() {
+        return tenNguoiDangBai;
+    }
+
+    /**
+     * @param tenNguoiDangBai the tenNguoiDangBai to set
+     */
+    public void setTenNguoiDangBai(String tenNguoiDangBai) {
+        this.tenNguoiDangBai = tenNguoiDangBai;
+    }
+
+    /**
      * @return the file
      */
     public MultipartFile getFile() {
@@ -105,6 +119,8 @@ public class BaiViet implements Serializable {
     private NguoiDung idNguoiDung;
     @Transient
     private MultipartFile file;
+    @Transient
+    private String tenNguoiDangBai;
     public BaiViet() {
     }
 

@@ -1,4 +1,4 @@
-/*
+    /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
@@ -6,6 +6,7 @@ package com.ntt.configs;
 
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
+import com.ntt.formatter.LoaiBaiVietFormatter;
 import com.ntt.formatter.LoaiTaiKhoanFormatter;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.context.annotation.Bean;
@@ -74,9 +75,11 @@ public class WebAppContextConfig implements WebMvcConfigurer {
         
         return c;
     }
+    
     @Override
     public void addFormatters(FormatterRegistry registry){
         registry.addFormatter(new LoaiTaiKhoanFormatter());
+        registry.addFormatter(new LoaiBaiVietFormatter());
     
     }
 }

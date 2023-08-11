@@ -4,9 +4,15 @@
  */
 package com.ntt.controllers;
 
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
 import com.ntt.pojo.NguoiDung;
 import com.ntt.service.LoaiTaiKhoanService;
 import com.ntt.service.TaiKhoanService;
+import java.io.IOException;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.stereotype.Controller;
@@ -24,16 +30,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @Transactional
 public class DangKiController {
-
+    
+    @Autowired
+    private Cloudinary cloudinary;
     @Autowired
     private TaiKhoanService taikhoanDetailsService;
 
     @Autowired
     private LoaiTaiKhoanService loaiTaiKhoansv;
-//    @RequestMapping("/dangki")
-//    public String dangki() {
-//        return "dangki";
-//    }
+
     @GetMapping("/dangki")
     public String dangkiView(Model model) {
         model.addAttribute("user", new NguoiDung());
@@ -52,6 +57,14 @@ public class DangKiController {
         String errMsg = "";
         if (nguoidung.getMatKhau().equals(nguoidung.getXacNhanMatKhau())) {
             if (this.taikhoanDetailsService.addTaiKhoan(nguoidung) == true) {
+                try {
+                    Map res=this.cloudinary.uploader().upload(nguoidung.getFile().getBytes(),
+                            ObjectUtils.asMap("resource_type", "auto"));
+                    nguoidung.setAvatar(res.get("secure_url").toString());
+                    
+                } catch (IOException ex) {
+                     System.err.println("== ADD BaiViet ==" + ex.getMessage());
+                }
                 return "redirect:/dangnhap";
             } else {
                 errMsg = "Đã có lỗi xãy ra";

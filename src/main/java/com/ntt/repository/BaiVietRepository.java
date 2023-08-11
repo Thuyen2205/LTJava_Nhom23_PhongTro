@@ -13,7 +13,8 @@ import java.util.List;
  */
 public interface BaiVietRepository {
     List<BaiViet> getBaiViet();
-//    boolean addBaiViet(BaiViet baiviet);
+     List<BaiViet> getBaiViet(String tenBaiViet);
+    boolean addBaiViet(BaiViet baiviet);
    
     
 }

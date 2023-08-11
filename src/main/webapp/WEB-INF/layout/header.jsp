@@ -25,17 +25,23 @@ Author     : ThanhThuyen
                     </li>
                 </c:if>
                 <c:if test="${pageContext.request.userPrincipal.name != null}">
+
+                    <a class="navbar-brand" href="#">
+                        <img src="${taikhoan.avatar}" alt="${pageContext.request.userPrincipal.name}" style="width:80px;" class="rounded-pill"> 
+                    </a>
+
                     <li class="nav-item">
                         <a class="nav-link" href="<c:url value ="/" />"> ${pageContext.request.userPrincipal.name} </a>                       
                     </li>
-                     <li class="nav-item">
+                    <li class="nav-item">
                         <a class="nav-link" href="<c:url value ="/logout" />"> Đăng xuất </a>                       
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<c:url value ="/dangbai"/> ">Đăng bài</a>
                     </li>
                 </c:if>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="<c:url value ="/dangbai"/> ">Đăng bài</a>
-                </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="javascript:void(0)">Thông báo</a>
                 </li>

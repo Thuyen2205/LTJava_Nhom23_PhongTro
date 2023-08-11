@@ -19,18 +19,66 @@
                 <label for="file">Ảnh nhà trọ: </label>
                 <br></br>
                 <form:input type="file" id="file" path="file" cssClass="form -control"/>
+            </div> 
+            
+            <div>
+                <label for="file">Tên Người Đăng Bài:  </label>
+                <form:input  id="file" path="tenNguoiDangBai" value="${pageContext.request.userPrincipal.name}" cssClass="form -control"  />
+                <br></br>
             </div>
+                
             <div>
                 <label for="file">Tên bài viết </label>
                 <br></br>
-                <form:input type="text"  path="tenBai" cssClass="form -control"/>
+                <form:input type="text"  path="tenBaiViet" cssClass="form -control" />
+            </div>
+            
+            <br></br>
+            
+            <div>
+                <label for="file">Noi dung</label>
+                <br></br>
+                <form:input type="text"  path="noiDung" cssClass="form -control"/>
+            </div>
+            
+            <div>
+                <label for="file">Pham vi can tim</label>
+                <br></br>
+                <form:input type="text"  path="phamViCanTim" cssClass="form -control"/>
+            </div>
+            
+            <div>
+                <label for="file">So nguoi</label>
+                <br></br>
+                <form:input type="text"  path="soNguoi" cssClass="form -control"/>
+            </div>
+            
+            <div>
+                <label for="file">Gia thue</label>
+                <br></br>
+                <form:input type="text"  path="giaThue" cssClass="form -control"/>
+            </div>
+            
+            <div>
+                <label for="file">Dien Tich</label>
+                <br></br>
+                <form:input type="text"  path="dienTich" cssClass="form -control"/>
+            </div>
+            
+            <div>
+                <label for="file">Dia Chi Chi Tiet</label>
+                <br></br>
+                <form:input type="text"  path="diaChiCt" cssClass="form -control"/>
             </div>
             <br></br>
-            <div>
-                <label for="file">Tác giả </label>
-                <br></br>
-                <form:input type="text"  path="tacGia" cssClass="form -control"/>
+             <div >
+                <form:select class="role" name="role" id="role" path="loaiBaiViet">
+                    <c:forEach items="${baiviet_role}" var="c" >
+                        <option value="${c.id}" selected>${c.tenLoaiBaiViet}</option>
+                    </c:forEach>
+                </form:select>
             </div>
+            <br></br>
             <div class="form-group">
                 <input type="submit" value="Them Bai Viet" class="btn btn-danger"/>
             </div>

@@ -10,7 +10,7 @@
 <html>
     <body>
     <c:forEach items="${baiviet}" var="p">
-        Chủ trọ ${p.id} -${p.ngayDang}- ${p.tenBai}- ${p.tacGia} 
+        Chủ trọ ${p.id} -${p.tenBaiViet}- ${p.noiDung}
         <br></br>
     </c:forEach>
 </body>

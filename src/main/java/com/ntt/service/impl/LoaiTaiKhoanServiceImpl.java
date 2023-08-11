@@ -23,7 +23,6 @@ public class LoaiTaiKhoanServiceImpl implements LoaiTaiKhoanService{
     
     @Override
     public List<LoaiTaiKhoan> getLoaiTaiKhoan() {
-        return loaiTaiKhoanRepository.getLoaiTaiKhoan();
+        return this.loaiTaiKhoanRepository.getLoaiTaiKhoan();
     }
-    
 }

@@ -55,7 +55,6 @@ public class TaiKhoanServiceImpl implements TaiKhoanService{
        
        Set<GrantedAuthority> auth= new HashSet<>();
        auth.add(new SimpleGrantedAuthority(taikhoan.getIdLoaiTaiKhoan().getTenLoaiTaiKhoan()));
-       
        return new org.springframework.security.core.userdetails.User(taikhoan.getTenTaiKhoan(),taikhoan.getMatKhau(),auth);
        
     }
@@ -64,8 +63,4 @@ public class TaiKhoanServiceImpl implements TaiKhoanService{
     public LoaiTaiKhoan getLoaiTaiKhoan(String tenLoaiTaiKhoan) {
       return this.taikhoanRepository.getLoaiTaiKhoan(tenLoaiTaiKhoan);
     }
-//      @Override
-//    public UserRole getRoleBenhNhan(String role) {
-//        return this.taiKhoanRepository.getRoleBenhNhan(role);
-//    }
 }

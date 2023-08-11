@@ -8,10 +8,13 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<!--    <body>
-        <c:forEach items="${baiviet}" var="p">
-            Bài viết thứ ${p.id} -${p.ngayDang}- ${p.tenBai}
-            <br></br>
-        </c:forEach>
-    </body>-->
+    <c:forEach items="${baiviet}" var="p">
+        Bài viết thứ ${p.id} -${p.tenBaiViet}- ${p.noiDung}
+
+        <div>
+            <img src="${p.hinhAnh}" alt="Không có ảnh"  style="width:300px;" class="rounded-pill"> 
+        </div>
+        <br></br>
+    </c:forEach>
+    <h1>Hello</h1>
 </html>

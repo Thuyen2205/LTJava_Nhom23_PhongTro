@@ -5,12 +5,14 @@
 package com.ntt.repository.impl;
 
 import com.ntt.pojo.BaiViet;
+import com.ntt.pojo.NguoiDung;
 
 import com.ntt.repository.BaiVietRepository;
 import java.util.List;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -25,30 +27,47 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Repository
 @Transactional
-public class BaiVietRepositoryImpl implements BaiVietRepository{
-    
+public class BaiVietRepositoryImpl implements BaiVietRepository {
+
     @Autowired
     private LocalSessionFactoryBean factory;
-    
+
     @Override
     public List<BaiViet> getBaiViet() {
-        Session s= this.factory.getObject().getCurrentSession();
-        Query q=s.createQuery("From BaiViet");
+        Session s = this.factory.getObject().getCurrentSession();
+        Query q = s.createQuery("From BaiViet");
         return q.getResultList();
     }
 
-//    @Override
-//    public boolean addBaiViet(BaiViet baiviet) {
-//        Session s=this.factory.getObject().getCurrentSession();
-//        try {
-//            s.save(baiviet);
-//            return true;
-//        } catch (HibernateException e) {
-//            System.err.println(e.getMessage());
-//        }
-//        return false;
-//        
-//    }
+    @Override
+    public boolean addBaiViet(BaiViet baiviet) {
+        Session s = this.factory.getObject().getCurrentSession();
+        try {
+            s.save(baiviet);
+            return true;
+        } catch (HibernateException e) {
+            System.err.println(e.getMessage());
+        }
+        return false;
 
-    
+    }
+
+    @Override
+    public List<BaiViet> getBaiViet(String tenBaiViet) {
+          Session s= this.factory.getObject().getCurrentSession();
+        CriteriaBuilder builder= s.getCriteriaBuilder();
+        CriteriaQuery<NguoiDung> query= builder.createQuery(NguoiDung.class);
+        Root root=query.from(NguoiDung.class);
+        query= query.select(root);
+        
+        if(!tenBaiViet.isEmpty())
+        {
+            Predicate p =builder.equal(root.get("tenBaiViet").as(String.class), tenBaiViet.trim());
+            query =query.where(p);
+        }
+        
+        Query q = s.createQuery(query);
+        return q.getResultList();
+    }
+
 }

@@ -30,49 +30,56 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @EnableTransactionManagement
 @ComponentScan(basePackages = {"com.ntt.repository",
     "com.ntt.service"})
-public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
+public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
+
     @Autowired
     private UserDetailsService userDetailsService;
-    
+
     @Autowired
     @Qualifier("customSuccessHandler")
     private CustomSuccessHandler customSuccessHandler;
-    
+
     @Bean
-    public BCryptPasswordEncoder passwordEncoder(){
+    public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-    
-    
-    
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService)
                 .passwordEncoder(passwordEncoder());
-        
+
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        
+
         http.formLogin().loginPage("/dangnhap")
                 .usernameParameter("username")
                 .passwordParameter("password");
-        
+
         http.formLogin().successHandler(customSuccessHandler).failureUrl("/dangnhap?errorr");
-        
+
 //        http.formLogin().defaultSuccessUrl("/").failureUrl("/dangnhap?error");
-        
         http.logout().logoutSuccessUrl("/dangnhap");
         http.exceptionHandling().accessDeniedPage("/dangnhap?accessDenied");
         http.authorizeRequests().antMatchers("/").permitAll()
                 .antMatchers("/admin").access("hasRole('ROLE_ADMIN')");
-       
+
         http.csrf().disable();
-        
-        
-        
+
     }
-    
-    
+
+    @Bean
+    public Cloudinary cloudinary() {
+
+        Cloudinary c = new Cloudinary(ObjectUtils.asMap(
+                "cloud_name", "dpp5kyfae",
+                "api_key", "515925565185764",
+                "api_secret", "htAoHniRW5N34DQkcBo2Jh_5-XM",
+                "secure", true));
+
+        return c;
+    }
+
 }
