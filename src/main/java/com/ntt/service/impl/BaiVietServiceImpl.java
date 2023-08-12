@@ -29,7 +29,8 @@ import org.springframework.stereotype.Service;
  * @author ThanhThuyen
  */
 @Service
-public class BaiVietServiceImpl implements BaiVietService{
+public class BaiVietServiceImpl implements BaiVietService {
+
     @Autowired
     private Cloudinary cloudinary;
     @Autowired
@@ -38,7 +39,7 @@ public class BaiVietServiceImpl implements BaiVietService{
     private TaiKhoanRepository taikhoan;
     @Autowired
     private LoaiBaiVietRepository loaiBaiViet;
-    
+
     @Override
     public List<BaiViet> getBaiViet() {
         return this.baiviet.getBaiViet();
@@ -46,39 +47,42 @@ public class BaiVietServiceImpl implements BaiVietService{
 
     @Override
     public boolean addBaiViet(BaiViet baiviet) {
-         try {
+        NguoiDung b = this.taikhoan.getTaiKhoan(baiviet.getTenNguoiDangBai()).get(0);
+        baiviet.setIdNguoiDung(b);
+        try {
+
+            if (baiviet.getIdNguoiDung().getIdLoaiTaiKhoan().getId() == 2) {
+
                 Map res = this.cloudinary.uploader().upload(baiviet.getFile().getBytes(),
                         ObjectUtils.asMap("resource_type", "auto"));
                 baiviet.setHinhAnh(res.get("secure_url").toString());
-                NguoiDung b = this.taikhoan.getTaiKhoan(baiviet.getTenNguoiDangBai().toString()).get(0);
-                baiviet.setIdNguoiDung(b);
-//                LoaiBaiViet loaiBai=loaiBaiViet.getLoaiBaiViet().get(0);
-//                baiviet.setLoaiBaiViet(loaiBai);
-                
-            } catch (IOException ex) {
-                System.err.println("== ADD BaiViet ==" + ex.getMessage());
+
             }
-      return this.baiviet.addBaiViet(baiviet);
+
+
+        } catch (IOException ex) {
+            System.err.println("== ADD BaiViet ==" + ex.getMessage());
+        }
+        return this.baiviet.addBaiViet(baiviet);
     }
 
     @Override
     public List<BaiViet> getBaiViet(String tenBaiViet) {
-       return this.baiviet.getBaiViet(tenBaiViet);
+        return this.baiviet.getBaiViet(tenBaiViet);
     }
 
     @Override
     public BaiViet loadBaiViet(String tenBaiViet) {
-        List<BaiViet> baiviets=this.getBaiViet(tenBaiViet);
-       
-       if(baiviets.isEmpty())
-       {
-           throw new UsernameNotFoundException("Bài Viết Khong Ton Tại!!!");
-       }
-       BaiViet baiviet=baiviets.get(0);
-       
-       baiviet.getIdNguoiDung().getTenNguoiDung();
-       
-       return new BaiViet();
+        List<BaiViet> baiviets = this.getBaiViet(tenBaiViet);
+
+        if (baiviets.isEmpty()) {
+            throw new UsernameNotFoundException("Bài Viết Khong Ton Tại!!!");
+        }
+        BaiViet baiviet = baiviets.get(0);
+
+        baiviet.getIdNguoiDung().getTenNguoiDung();
+
+        return new BaiViet();
     }
-    
+
 }

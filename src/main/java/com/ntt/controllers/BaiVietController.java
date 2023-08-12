@@ -32,8 +32,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class BaiVietController {
 
     @Autowired
-    private Cloudinary cloudinary;
-    @Autowired
     private BaiVietService baivietService;
     @Autowired
     private LoaiBaiVietService loaiBaiViet;
@@ -44,6 +42,7 @@ public class BaiVietController {
     public String list(Model model, Authentication authen) {
         model.addAttribute("nguoidung",this.taikhoan.getTaiKhoan(authen.getName()).get(0));
         model.addAttribute("baiviet_role", this.loaiBaiViet.getLoaiBaiViet());
+        model.addAttribute("taikhoan",this.taikhoan.getTaiKhoan(authen.getName()).get(0));
         model.addAttribute("baiviet", new BaiViet());
         return "dangbai";
 

@@ -4,12 +4,16 @@
  */
 package com.ntt.service.impl;
 
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
 import com.ntt.pojo.LoaiTaiKhoan;
 import com.ntt.pojo.NguoiDung;
 import com.ntt.repository.TaiKhoanRepository;
 import com.ntt.service.TaiKhoanService;
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -26,6 +30,8 @@ import org.springframework.stereotype.Service;
 @Service("taikhoanDetailsService")
 public class TaiKhoanServiceImpl implements TaiKhoanService{
     @Autowired
+    private Cloudinary cloudinary;
+    @Autowired
     private TaiKhoanRepository taikhoanRepository;
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
@@ -34,6 +40,14 @@ public class TaiKhoanServiceImpl implements TaiKhoanService{
         
         String pass=nguoidung.getMatKhau(); 
         nguoidung.setMatKhau(this.passwordEncoder.encode(pass));
+        try {
+                    Map res=this.cloudinary.uploader().upload(nguoidung.getFile().getBytes(),
+                            ObjectUtils.asMap("resource_type", "auto"));
+                    nguoidung.setAvatar(res.get("secure_url").toString());
+                    
+                } catch (IOException ex) {
+                     System.err.println("== ADD BaiViet ==" + ex.getMessage());
+                }
 //        nguoidung.setLoaiTaiKhoan(NguoiDung.KhachHang);
         return this.taikhoanRepository.addTaiKhoan(nguoidung);
     }

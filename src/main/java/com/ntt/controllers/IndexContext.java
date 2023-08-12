@@ -7,6 +7,7 @@ package com.ntt.controllers;
 
 import com.ntt.pojo.NguoiDung;
 import com.ntt.service.BaiVietService;
+import com.ntt.service.LoaiBaiVietService;
 import com.ntt.service.TaiKhoanService;
 import java.util.Map;
 import javax.persistence.Query;
@@ -26,7 +27,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @author ThanhThuyen
  */
 @Controller
-
+@Transactional
 public class IndexContext {
     
     @Autowired
@@ -35,12 +36,15 @@ public class IndexContext {
     private TaiKhoanService taikhoan;
     @Autowired
     private BaiVietService baivietService;
+    @Autowired
+    private LoaiBaiVietService loaiBaiViet;
     @RequestMapping("/")
     @Transactional
     public String index(Model model, NguoiDung nguoidung,Authentication authen){
         if(authen!=null)
         {
-             model.addAttribute("taikhoan",this.taikhoan.getTaiKhoan(authen.getName()).get(0));
+            model.addAttribute("baiviet", this.baivietService.getBaiViet().get(0));
+            model.addAttribute("taikhoan",this.taikhoan.getTaiKhoan(authen.getName()).get(0));
         }
        
        

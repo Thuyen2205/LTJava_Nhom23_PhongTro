@@ -57,14 +57,7 @@ public class DangKiController {
         String errMsg = "";
         if (nguoidung.getMatKhau().equals(nguoidung.getXacNhanMatKhau())) {
             if (this.taikhoanDetailsService.addTaiKhoan(nguoidung) == true) {
-                try {
-                    Map res=this.cloudinary.uploader().upload(nguoidung.getFile().getBytes(),
-                            ObjectUtils.asMap("resource_type", "auto"));
-                    nguoidung.setAvatar(res.get("secure_url").toString());
-                    
-                } catch (IOException ex) {
-                     System.err.println("== ADD BaiViet ==" + ex.getMessage());
-                }
+                
                 return "redirect:/dangnhap";
             } else {
                 errMsg = "Đã có lỗi xãy ra";
