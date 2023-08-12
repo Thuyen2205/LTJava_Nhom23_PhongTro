@@ -14,6 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -29,7 +30,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
- * @author ThanhThuyen
+ * @author Admins
  */
 @Entity
 @Table(name = "bai_viet")
@@ -39,7 +40,6 @@ import org.springframework.web.multipart.MultipartFile;
     @NamedQuery(name = "BaiViet.findById", query = "SELECT b FROM BaiViet b WHERE b.id = :id"),
     @NamedQuery(name = "BaiViet.findByTenBaiViet", query = "SELECT b FROM BaiViet b WHERE b.tenBaiViet = :tenBaiViet"),
     @NamedQuery(name = "BaiViet.findByHinhAnh", query = "SELECT b FROM BaiViet b WHERE b.hinhAnh = :hinhAnh"),
-    @NamedQuery(name = "BaiViet.findByNoiDung", query = "SELECT b FROM BaiViet b WHERE b.noiDung = :noiDung"),
     @NamedQuery(name = "BaiViet.findByPhamViCanTim", query = "SELECT b FROM BaiViet b WHERE b.phamViCanTim = :phamViCanTim"),
     @NamedQuery(name = "BaiViet.findByNgayDang", query = "SELECT b FROM BaiViet b WHERE b.ngayDang = :ngayDang"),
     @NamedQuery(name = "BaiViet.findBySoNguoi", query = "SELECT b FROM BaiViet b WHERE b.soNguoi = :soNguoi"),
@@ -47,34 +47,6 @@ import org.springframework.web.multipart.MultipartFile;
     @NamedQuery(name = "BaiViet.findByDienTich", query = "SELECT b FROM BaiViet b WHERE b.dienTich = :dienTich"),
     @NamedQuery(name = "BaiViet.findByDiaChiCt", query = "SELECT b FROM BaiViet b WHERE b.diaChiCt = :diaChiCt")})
 public class BaiViet implements Serializable {
-
-    /**
-     * @return the tenNguoiDangBai
-     */
-    public String getTenNguoiDangBai() {
-        return tenNguoiDangBai;
-    }
-
-    /**
-     * @param tenNguoiDangBai the tenNguoiDangBai to set
-     */
-    public void setTenNguoiDangBai(String tenNguoiDangBai) {
-        this.tenNguoiDangBai = tenNguoiDangBai;
-    }
-
-    /**
-     * @return the file
-     */
-    public MultipartFile getFile() {
-        return file;
-    }
-
-    /**
-     * @param file the file to set
-     */
-    public void setFile(MultipartFile file) {
-        this.file = file;
-    }
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -88,7 +60,8 @@ public class BaiViet implements Serializable {
     @Size(max = 500)
     @Column(name = "hinh_anh")
     private String hinhAnh;
-    @Size(max = 1000)
+    @Lob
+    @Size(max = 2147483647)
     @Column(name = "noi_dung")
     private String noiDung;
     @Size(max = 100)
@@ -121,6 +94,7 @@ public class BaiViet implements Serializable {
     private MultipartFile file;
     @Transient
     private String tenNguoiDangBai;
+
     public BaiViet() {
     }
 
@@ -266,5 +240,33 @@ public class BaiViet implements Serializable {
     public String toString() {
         return "com.ntt.pojo.BaiViet[ id=" + id + " ]";
     }
-    
+
+    /**
+     * @return the file
+     */
+    public MultipartFile getFile() {
+        return file;
+    }
+
+    /**
+     * @param file the file to set
+     */
+    public void setFile(MultipartFile file) {
+        this.file = file;
+    }
+
+    /**
+     * @return the tenNguoiDangBai
+     */
+    public String getTenNguoiDangBai() {
+        return tenNguoiDangBai;
+    }
+
+    /**
+     * @param tenNguoiDangBai the tenNguoiDangBai to set
+     */
+    public void setTenNguoiDangBai(String tenNguoiDangBai) {
+        this.tenNguoiDangBai = tenNguoiDangBai;
+    }
+
 }

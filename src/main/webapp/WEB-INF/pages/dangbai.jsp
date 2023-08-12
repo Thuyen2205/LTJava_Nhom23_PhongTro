@@ -31,8 +31,30 @@
                     <br></br>
                     <form:input type="file" id="file" path="file" cssClass="form -control"/>
                 </div>    
+                <div>
+                    <label for="file">Gia thue</label>
+                    <br></br>
+                    <form:input type="text"  path="giaThue" cssClass="form -control"/>
+                </div>
 
-               
+                <div>
+                    <label for="file">So nguoi</label>
+                    <br></br>
+                    <form:input type="text"  path="soNguoi" cssClass="form -control"/>
+                </div>
+                <div>
+                <label for="file">Dien Tich</label>
+                <br></br>
+                <form:input type="text"  path="dienTich" cssClass="form -control"/>
+            </div>
+
+            <div>
+                <label for="file">Dia Chi Chi Tiet</label>
+                <br></br>
+                <form:input type="text"  path="diaChiCt" cssClass="form -control"/>
+            </div>
+
+
 
 
             </c:if>
@@ -60,58 +82,38 @@
                 <form:input type="text"  path="noiDung" cssClass="form -control"/>
             </div>
 
-             <div>
-                    <label for="file">Gia thue</label>
-                    <br></br>
-                    <form:input type="text"  path="giaThue" cssClass="form -control"/>
-                </div>
-
-            <div>
-                <label for="file">So nguoi</label>
-                <br></br>
-                <form:input type="text"  path="soNguoi" cssClass="form -control"/>
-            </div>
 
 
 
-            <div>
-                <label for="file">Dien Tich</label>
-                <br></br>
-                <form:input type="text"  path="dienTich" cssClass="form -control"/>
-            </div>
 
-            <div>
-                <label for="file">Dia Chi Chi Tiet</label>
-                <br></br>
-                <form:input type="text"  path="diaChiCt" cssClass="form -control"/>
-            </div>
+            
             <br></br>
             <div >
                 <%--<form:select class="role" name="role" id="role" path="loaiBaiViet">--%>
-                    <%--<c:forEach items="${baiviet_role}" var="c" >--%>
-                        <!--<option value="${c.id}" selected>${c.tenLoaiBaiViet}</option>-->
-                    <%--</c:forEach>--%>
+                <%--<c:forEach items="${baiviet_role}" var="c" >--%>
+                    <!--<option value="${c.id}" selected>${c.tenLoaiBaiViet}</option>-->
+                <%--</c:forEach>--%>
                 <%--</form:select>--%>
             </div>
-            
-             <c:if test="${nguoidung.idLoaiTaiKhoan.id==2}">
+
+            <c:if test="${nguoidung.idLoaiTaiKhoan.id==2}">
                 <div>
-                    
-                  Tin cho thue
+
+                    Tin cho thue
                     <form:input type="text" id="file" path="loaiBaiViet" value="1" readonly="true"  cssClass="form -control"/>
-                    
+
                 </div>    
 
             </c:if>
             <c:if test="${nguoidung.idLoaiTaiKhoan.id==3}">
                 <div>
-                  Tin tìm tro
+                    Tin tìm tro
                     <form:input type="text" id="file" path="loaiBaiViet" value="2" readonly="true"  cssClass="form -control"/>
-                    
+
                 </div>    
 
             </c:if>
-            
+
             <br></br>
             <div class="form-group">
                 <input type="submit" value="Them Bai Viet" class="btn btn-danger"/>

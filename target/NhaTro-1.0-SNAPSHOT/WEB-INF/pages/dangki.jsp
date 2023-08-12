@@ -43,9 +43,9 @@
                     </c:forEach>
                 </form:select>
             </div>
-            
-            <form:input type="file" id="file" path="file" placeholder="Upload Avatar"/>
-
+            <div class="upload-avatar">
+                <form:input type="file" id="file" path="file" placeholder="Upload Avatar"/>
+            </div>
 
             <button class="btn" type="submit" >Đăng kí</button>
 

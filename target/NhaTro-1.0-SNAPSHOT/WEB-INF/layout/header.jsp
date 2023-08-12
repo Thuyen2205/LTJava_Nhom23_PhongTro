@@ -13,8 +13,11 @@ Author     : ThanhThuyen
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
-
+        <a class="navbar-brand" href="#">
+            <img src="${taikhoan.avatar}" alt="${pageContext.request.userPrincipal.name}" style="width:80px;" class="rounded-pill"> 
+        </a>
         <div class="collapse navbar-collapse" id="mynavbar">
+
             <ul class="navbar-nav me-auto">
                 <c:if test="${pageContext.request.userPrincipal.name == null}">
                     <li class="nav-item">
@@ -24,11 +27,10 @@ Author     : ThanhThuyen
                         <a class="nav-link" href="<c:url value ="/dangki"/>"> Đăng kí </a>                       
                     </li>
                 </c:if>
+
                 <c:if test="${pageContext.request.userPrincipal.name != null}">
 
-                    <a class="navbar-brand" href="#">
-                        <img src="${taikhoan.avatar}" alt="${pageContext.request.userPrincipal.name}" style="width:80px;" class="rounded-pill"> 
-                    </a>
+
 
                     <li class="nav-item">
                         <a class="nav-link" href="<c:url value ="/" />"> ${pageContext.request.userPrincipal.name} </a>                       
@@ -51,7 +53,7 @@ Author     : ThanhThuyen
 
             <form class="d-flex">
                 <input class="form-control me-2" type="text" placeholder="Tìm kiếm">
-                <button class="btn btn-primary" type="button">Tìm kiếm</button>
+                <button class="btn btn-primary" type="button">Tìm</button>
             </form>
         </div>
     </div>

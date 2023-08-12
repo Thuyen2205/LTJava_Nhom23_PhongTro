@@ -18,4 +18,8 @@ public interface BaiVietService  {
     List<BaiViet> getBaiViet(String tenBaiViet);
     BaiViet loadBaiViet(String tenBaiViet);
     boolean addBaiViet(BaiViet baiviet);
+    
+    Object getBaiVietById(int id);
+    List<Object> getBaiVietByType(String loaiBViet);
 }
+

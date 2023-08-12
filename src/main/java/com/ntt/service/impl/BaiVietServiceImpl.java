@@ -34,7 +34,7 @@ public class BaiVietServiceImpl implements BaiVietService {
     @Autowired
     private Cloudinary cloudinary;
     @Autowired
-    private BaiVietRepository baiviet;
+    private BaiVietRepository baivietRepo;
     @Autowired
     private TaiKhoanRepository taikhoan;
     @Autowired
@@ -42,7 +42,7 @@ public class BaiVietServiceImpl implements BaiVietService {
 
     @Override
     public List<BaiViet> getBaiViet() {
-        return this.baiviet.getBaiViet();
+        return this.baivietRepo.getBaiViet();
     }
 
     @Override
@@ -59,16 +59,15 @@ public class BaiVietServiceImpl implements BaiVietService {
 
             }
 
-
         } catch (IOException ex) {
             System.err.println("== ADD BaiViet ==" + ex.getMessage());
         }
-        return this.baiviet.addBaiViet(baiviet);
+        return this.baivietRepo.addBaiViet(baiviet);
     }
 
     @Override
     public List<BaiViet> getBaiViet(String tenBaiViet) {
-        return this.baiviet.getBaiViet(tenBaiViet);
+        return this.baivietRepo.getBaiViet(tenBaiViet);
     }
 
     @Override
@@ -83,6 +82,17 @@ public class BaiVietServiceImpl implements BaiVietService {
         baiviet.getIdNguoiDung().getTenNguoiDung();
 
         return new BaiViet();
+    }
+
+    @Override
+    public Object getBaiVietById(int id) {
+        return this.baivietRepo.getBaiVietById(id);
+
+    }
+
+    @Override
+    public List<Object> getBaiVietByType(String loaiBViet) {
+        return this.baivietRepo.getBaiVietByType(loaiBViet);
     }
 
 }

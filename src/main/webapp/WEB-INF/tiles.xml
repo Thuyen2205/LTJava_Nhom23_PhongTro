@@ -52,6 +52,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this 
         <put-attribute name="content"
                        value="/WEB-INF/pages/dangbai.jsp" />
     </definition>
+    <definition name="thtin_bviet" extends="baseLayout">
+        <put-attribute name="title" value="Chi tiết tin"/>
+        <put-attribute name="content"
+                       value="/WEB-INF/pages/thtin_bviet.jsp" />
+    </definition>
     
     
 </tiles-definitions>

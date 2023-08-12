@@ -1,37 +1,45 @@
-C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\repository\impl\TaiKhoanRepositoryImpl.java
-C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\controllers\TaiKhoanController.java
-C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\configs\SpringSecurityConfig.java
-C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\configs\DispatcherServletInit.java
-C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\service\impl\LoaiBaiVietServiceImpl.java
-C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\configs\WebAppContextConfig.java
-C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\pojo\LoaiTaiKhoan.java
-C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\repository\impl\LoaiBaiVietRepositoryImpl.java
-C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\service\TaiKhoanService.java
-C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\controllers\DangKiController.java
-C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\configs\CustomSuccessHandler.java
-C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\service\impl\TaiKhoanServiceImpl.java
-C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\configs\AppConfig.java
-C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\service\impl\LoaiTaiKhoanServiceImpl.java
-C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\repository\impl\BaiVietRepositoryImpl.java
-C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\service\LoaiTaiKhoanService.java
-C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\controllers\BaiVietController.java
-C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\service\impl\BaiVietServiceImpl.java
-C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\service\BaiVietService.java
-C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\repository\impl\LoaiTaiKhoanRepositoryImpl.java
-C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\controllers\IndexContext.java
-C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\service\LoaiBaiVietService.java
-C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\pojo\BaiViet.java
-C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\repository\LoaiTaiKhoanRepository.java
-C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\formatter\LoaiBaiVietFormatter.java
-C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\configs\HibernateConfig.java
-C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\pojo\LoaiBaiViet.java
-C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\repository\BaiVietRepository.java
-C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\repository\TaiKhoanRepository.java
-C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\configs\SecurityWebAppInitializer.java
-C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\repository\LoaiBaiVietRepository.java
-C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\pojo\NguoiDung.java
-C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\configs\TitlesConfig.java
-C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\pojo\BinhLuan.java
-C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\pojo\ThongBao.java
-C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\formatter\LoaiTaiKhoanFormatter.java
-C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\controllers\DangNhapController.java
+C:\Users\Admins\OneDrive - TR??NG ??I H?C M? TP.HCM\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\pojo\NguoiDung.java
+C:\Users\Admins\OneDrive - TR??NG ??I H?C M? TP.HCM\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\formatter\LoaiBaiVietFormatter.java
+C:\Users\Admins\OneDrive - TR??NG ??I H?C M? TP.HCM\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\repository\impl\TaiKhoanRepositoryImpl.java
+C:\Users\Admins\OneDrive - TR??NG ??I H?C M? TP.HCM\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\configs\SecurityWebAppInitializer.java
+C:\Users\Admins\OneDrive - TR??NG ??I H?C M? TP.HCM\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\controllers\IndexContext.java
+C:\Users\Admins\OneDrive - TR??NG ??I H?C M? TP.HCM\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\controllers\BaiVietController.java
+C:\Users\Admins\OneDrive - TR??NG ??I H?C M? TP.HCM\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\pojo\LoaiTaiKhoan.java
+C:\Users\Admins\OneDrive - TR??NG ??I H?C M? TP.HCM\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\repository\BinhLuanRepository.java
+C:\Users\Admins\OneDrive - TR??NG ??I H?C M? TP.HCM\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\repository\ThongBaoRepository.java
+C:\Users\Admins\OneDrive - TR??NG ??I H?C M? TP.HCM\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\configs\SpringSecurityConfig.java
+C:\Users\Admins\OneDrive - TR??NG ??I H?C M? TP.HCM\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\service\BaiVietService.java
+C:\Users\Admins\OneDrive - TR??NG ??I H?C M? TP.HCM\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\formatter\LoaiTaiKhoanFormatter.java
+C:\Users\Admins\OneDrive - TR??NG ??I H?C M? TP.HCM\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\configs\WebAppContextConfig.java
+C:\Users\Admins\OneDrive - TR??NG ??I H?C M? TP.HCM\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\controllers\DangKiController.java
+C:\Users\Admins\OneDrive - TR??NG ??I H?C M? TP.HCM\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\controllers\DangNhapController.java
+C:\Users\Admins\OneDrive - TR??NG ??I H?C M? TP.HCM\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\repository\LoaiBaiVietRepository.java
+C:\Users\Admins\OneDrive - TR??NG ??I H?C M? TP.HCM\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\configs\CustomSuccessHandler.java
+C:\Users\Admins\OneDrive - TR??NG ??I H?C M? TP.HCM\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\pojo\LoaiBaiViet.java
+C:\Users\Admins\OneDrive - TR??NG ??I H?C M? TP.HCM\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\service\impl\LoaiTaiKhoanServiceImpl.java
+C:\Users\Admins\OneDrive - TR??NG ??I H?C M? TP.HCM\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\repository\impl\LoaiTaiKhoanRepositoryImpl.java
+C:\Users\Admins\OneDrive - TR??NG ??I H?C M? TP.HCM\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\repository\impl\BaiVietRepositoryImpl.java
+C:\Users\Admins\OneDrive - TR??NG ??I H?C M? TP.HCM\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\service\LoaiBaiVietService.java
+C:\Users\Admins\OneDrive - TR??NG ??I H?C M? TP.HCM\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\service\TaiKhoanService.java
+C:\Users\Admins\OneDrive - TR??NG ??I H?C M? TP.HCM\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\repository\TaiKhoanRepository.java
+C:\Users\Admins\OneDrive - TR??NG ??I H?C M? TP.HCM\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\pojo\BaiViet.java
+C:\Users\Admins\OneDrive - TR??NG ??I H?C M? TP.HCM\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\service\LoaiTaiKhoanService.java
+C:\Users\Admins\OneDrive - TR??NG ??I H?C M? TP.HCM\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\repository\impl\LoaiBaiVietRepositoryImpl.java
+C:\Users\Admins\OneDrive - TR??NG ??I H?C M? TP.HCM\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\configs\AppConfig.java
+C:\Users\Admins\OneDrive - TR??NG ??I H?C M? TP.HCM\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\service\BinhLuanService.java
+C:\Users\Admins\OneDrive - TR??NG ??I H?C M? TP.HCM\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\controllers\TaiKhoanController.java
+C:\Users\Admins\OneDrive - TR??NG ??I H?C M? TP.HCM\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\service\ThongBaoService.java
+C:\Users\Admins\OneDrive - TR??NG ??I H?C M? TP.HCM\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\service\impl\LoaiBaiVietServiceImpl.java
+C:\Users\Admins\OneDrive - TR??NG ??I H?C M? TP.HCM\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\repository\impl\BinhLuanRepositoryImpl.java
+C:\Users\Admins\OneDrive - TR??NG ??I H?C M? TP.HCM\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\repository\BaiVietRepository.java
+C:\Users\Admins\OneDrive - TR??NG ??I H?C M? TP.HCM\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\configs\DispatcherServletInit.java
+C:\Users\Admins\OneDrive - TR??NG ??I H?C M? TP.HCM\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\configs\TitlesConfig.java
+C:\Users\Admins\OneDrive - TR??NG ??I H?C M? TP.HCM\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\repository\LoaiTaiKhoanRepository.java
+C:\Users\Admins\OneDrive - TR??NG ??I H?C M? TP.HCM\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\service\impl\TaiKhoanServiceImpl.java
+C:\Users\Admins\OneDrive - TR??NG ??I H?C M? TP.HCM\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\service\impl\ThongBaoServiceImpl.java
+C:\Users\Admins\OneDrive - TR??NG ??I H?C M? TP.HCM\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\service\impl\BaiVietServiceImpl.java
+C:\Users\Admins\OneDrive - TR??NG ??I H?C M? TP.HCM\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\repository\impl\ThongBaoRepositoryImpl.java
+C:\Users\Admins\OneDrive - TR??NG ??I H?C M? TP.HCM\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\configs\HibernateConfig.java
+C:\Users\Admins\OneDrive - TR??NG ??I H?C M? TP.HCM\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\service\impl\BinhLuanServiceImpl.java
+C:\Users\Admins\OneDrive - TR??NG ??I H?C M? TP.HCM\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\pojo\ThongBao.java
+C:\Users\Admins\OneDrive - TR??NG ??I H?C M? TP.HCM\Desktop\LTJava_Nhom23_PhongTro\src\main\java\com\ntt\pojo\BinhLuan.java

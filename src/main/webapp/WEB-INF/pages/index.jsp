@@ -3,39 +3,74 @@
     Created on : Jul 25, 2023, 4:05:23 PM
     Author     : ThanhThuyen
 --%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+<link href="<c:url value="/css/style.css"/>" rel="stylesheet" />
+
 <!DOCTYPE html>
 <html>
-    <c:forEach items="${baiviet}" var="p">
-        <div style="background-color:cornflowerblue; width: 500px; margin: 10px; border-radius: 10px ">
-            <c:if test="${p.loaiBaiViet.id==1}" >
-                Chủ trọ: ${p.idNguoiDung.tenNguoiDung} <br></br>
-                ${p.tenBaiViet} -${p.noiDung}-${p.soNguoi}-${p.giaThue}-${p.dienTich}-${p.diaChiCt}
-                <div>
-                    <img src="${p.hinhAnh}" alt="Không có ảnh"  style="width:300px; border-radius: 10px; margin: 10% 5% 10% 15%" > 
-                </div><br></br>
-                <button style="margin-left: 40%; margin-bottom:10px;background-color: coral ">Bình luận</button>
-            </c:if>
+    <body>
+        <!<!-- TIN CHO THUE TRO -->
+        <div class="bangtin">
+            <c:forEach items="${baiviet_1}" var="t" >
+                <div class="bviet">
+                    <div class="bviet_anh">
+                        <img src="${t.hinhAnh}"/>
+                    </div>
+                    <div class="bviet_ndung">
+                        <table style="width:100%">
+                            <c:url value="/thtin_bviet" var="bvietAction">
+                                <c:param name="baivietId" value="${t.id}" />  
+                            </c:url>
+                            <a href="${bvietAction}" >${t.tenBaiViet}</a>
+                            <tr>
+                                <th>Khu vực:</th>
+                                <td>${t.phamViCanTim}</td>
+                            </tr>
+                            <tr>
+                                <th>Giá thuê:</th>
+                                <td>${t.giaThue}/tháng</td>
+                            </tr>
+                            <tr>
+                                <th>Diện tích:</th>
+                                <td>${t.dienTich}m2</td>
+                            </tr>
+                            <tr>
 
+                                <th></th>
+                                <td>   
+                                    <c:url value="/thtin_bviet" var="bvietAction">
+                                        <c:param name="baivietId" value="${t.id}" />  
+                                    </c:url>
+                                    <a href="${bvietAction}" class="bt-docthem" style="vertical-align:middle"> <span>Đọc thêm </span></a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+            </c:forEach>
+        </div>
+        <!<!-- TIN TIM TRO -->
+        <div class="bangtin">
+
+            <c:forEach items="${baiviet_2}" var="m" >
+                <div class="bviet">
+
+                    <div class="bviet_ndung">
+                        <table style="width:100%">
+                            <a >${m.tenBaiViet}</a>
+                            <tr>
+                                <th>Khu vực:</th>
+                                <td>${m.phamViCanTim}</td>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+
+            </c:forEach>
         </div>
 
-
-        <div style="background-color:cadetblue; width: 500px; margin: 10px; border-radius: 10px ">
-
-            <c:if test="${p.loaiBaiViet.id==2}" >
-                Nguoi tìm trọ: ${p.idNguoiDung.tenNguoiDung} <br></br>
-                ${p.tenBaiViet}-${p.noiDung}-${p.phamViCanTim}<br></br>
-                <button style="margin-left: 40%; margin-bottom:10px; background-color: chartreuse ">Bình luận</button>
-                
-            </c:if>
-
-        </div>
-
-
-        <br></br>
-    </c:forEach>
-
+    </body>
 </html>

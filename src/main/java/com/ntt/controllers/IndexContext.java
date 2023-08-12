@@ -4,7 +4,6 @@
  */
 package com.ntt.controllers;
 
-
 import com.ntt.pojo.NguoiDung;
 import com.ntt.service.BaiVietService;
 import com.ntt.service.LoaiBaiVietService;
@@ -21,7 +20,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
 /**
  *
  * @author ThanhThuyen
@@ -29,7 +27,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @Transactional
 public class IndexContext {
-    
+
     @Autowired
     private BaiVietService baiviet;
     @Autowired
@@ -38,17 +36,17 @@ public class IndexContext {
     private BaiVietService baivietService;
     @Autowired
     private LoaiBaiVietService loaiBaiViet;
+
     @RequestMapping("/")
     @Transactional
-    public String index(Model model, NguoiDung nguoidung,Authentication authen){
-        if(authen!=null)
-        {
+    public String index(Model model, NguoiDung nguoidung, Authentication authen) {
+        if (authen != null) {
             model.addAttribute("baiviet", this.baivietService.getBaiViet().get(0));
-            model.addAttribute("taikhoan",this.taikhoan.getTaiKhoan(authen.getName()).get(0));
+            model.addAttribute("taikhoan", this.taikhoan.getTaiKhoan(authen.getName()).get(0));
         }
-       
-       
-        model.addAttribute("baiviet", this.baiviet.getBaiViet());
+        model.addAttribute("baiviet", this.baivietService.getBaiViet());
+        model.addAttribute("baiviet_1", this.baivietService.getBaiVietByType("1"));
+        model.addAttribute("baiviet_2", this.baivietService.getBaiVietByType("2"));
         return "index";
     }
 }

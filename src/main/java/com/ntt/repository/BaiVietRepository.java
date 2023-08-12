@@ -13,8 +13,9 @@ import java.util.List;
  */
 public interface BaiVietRepository {
     List<BaiViet> getBaiViet();
-     List<BaiViet> getBaiViet(String tenBaiViet);
+    List<BaiViet> getBaiViet(String tenBaiViet);
     boolean addBaiViet(BaiViet baiviet);
-   
+    Object getBaiVietById(int id);
+    List<Object> getBaiVietByType (String loaiBViet);
     
 }

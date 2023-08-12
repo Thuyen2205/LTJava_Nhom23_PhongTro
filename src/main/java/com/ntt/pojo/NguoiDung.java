@@ -26,7 +26,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
- * @author ThanhThuyen
+ * @author Admins
  */
 @Entity
 @Table(name = "nguoi_dung")
@@ -42,34 +42,6 @@ import org.springframework.web.multipart.MultipartFile;
     @NamedQuery(name = "NguoiDung.findByAvatar", query = "SELECT n FROM NguoiDung n WHERE n.avatar = :avatar"),
     @NamedQuery(name = "NguoiDung.findByHinhAnh", query = "SELECT n FROM NguoiDung n WHERE n.hinhAnh = :hinhAnh")})
 public class NguoiDung implements Serializable {
-
-    /**
-     * @param xacNhanMatKhau the xacNhanMatKhau to set
-     */
-    public void setXacNhanMatKhau(String xacNhanMatKhau) {
-        this.xacNhanMatKhau = xacNhanMatKhau;
-    }
-
-    /**
-     * @return the xacNhanMatKhau
-     */
-    public String getXacNhanMatKhau() {
-        return xacNhanMatKhau;
-    }
-
-    /**
-     * @return the file
-     */
-    public MultipartFile getFile() {
-        return file;
-    }
-
-    /**
-     * @param file the file to set
-     */
-    public void setFile(MultipartFile file) {
-        this.file = file;
-    }
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -110,7 +82,7 @@ public class NguoiDung implements Serializable {
     private Set<BaiViet> baiVietSet;
     @Transient
     private MultipartFile file;
-    
+
     @Transient
     private String xacNhanMatKhau;
 
@@ -244,5 +216,33 @@ public class NguoiDung implements Serializable {
     public String toString() {
         return "com.ntt.pojo.NguoiDung[ id=" + id + " ]";
     }
-    
+
+    /**
+     * @return the file
+     */
+    public MultipartFile getFile() {
+        return file;
+    }
+
+    /**
+     * @param file the file to set
+     */
+    public void setFile(MultipartFile file) {
+        this.file = file;
+    }
+
+    /**
+     * @return the xacNhanMatKhau
+     */
+    public String getXacNhanMatKhau() {
+        return xacNhanMatKhau;
+    }
+
+    /**
+     * @param xacNhanMatKhau the xacNhanMatKhau to set
+     */
+    public void setXacNhanMatKhau(String xacNhanMatKhau) {
+        this.xacNhanMatKhau = xacNhanMatKhau;
+    }
+
 }

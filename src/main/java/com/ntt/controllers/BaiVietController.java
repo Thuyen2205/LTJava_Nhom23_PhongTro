@@ -22,6 +22,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -40,18 +42,22 @@ public class BaiVietController {
 
     @GetMapping("/dangbai")
     public String list(Model model, Authentication authen) {
-        model.addAttribute("nguoidung",this.taikhoan.getTaiKhoan(authen.getName()).get(0));
+        model.addAttribute("nguoidung", this.taikhoan.getTaiKhoan(authen.getName()).get(0));
         model.addAttribute("baiviet_role", this.loaiBaiViet.getLoaiBaiViet());
-        model.addAttribute("taikhoan",this.taikhoan.getTaiKhoan(authen.getName()).get(0));
+        model.addAttribute("taikhoan", this.taikhoan.getTaiKhoan(authen.getName()).get(0));
+
         model.addAttribute("baiviet", new BaiViet());
         return "dangbai";
 
     }
 
-//    @ModelAttribute
-//    public void Comm(Model model) {
-//      
-//    }
+    @RequestMapping("/thtin_bviet")
+    public String bvietThTin(Model model, @RequestParam Map<String, String> params) {
+        int id = Integer.parseInt(params.get("baivietId").toString());
+        model.addAttribute("BaiViet", this.baivietService.getBaiVietById(id));
+
+        return "thtin_bviet";
+    }
 
     @PostMapping("/dangbai")
     public String add(Model model, @ModelAttribute(value = "baiviet") BaiViet baiviet) {

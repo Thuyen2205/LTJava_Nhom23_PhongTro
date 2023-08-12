@@ -8,6 +8,7 @@ import com.ntt.pojo.BaiViet;
 import com.ntt.pojo.NguoiDung;
 
 import com.ntt.repository.BaiVietRepository;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -54,7 +55,7 @@ public class BaiVietRepositoryImpl implements BaiVietRepository {
 
     @Override
     public List<BaiViet> getBaiViet(String tenBaiViet) {
-          Session s= this.factory.getObject().getCurrentSession();
+        Session s= this.factory.getObject().getCurrentSession();
         CriteriaBuilder builder= s.getCriteriaBuilder();
         CriteriaQuery<NguoiDung> query= builder.createQuery(NguoiDung.class);
         Root root=query.from(NguoiDung.class);
@@ -68,6 +69,31 @@ public class BaiVietRepositoryImpl implements BaiVietRepository {
         
         Query q = s.createQuery(query);
         return q.getResultList();
+    }
+
+    @Override
+    public Object getBaiVietById(int id) {
+        Session s = this.factory.getObject().getCurrentSession();
+        org.hibernate.query.Query q = s.createQuery("FROM BaiViet WHERE id= :i");
+        q.setParameter("i", id);
+        return q.getSingleResult();
+    }
+
+    @Override
+    public List<Object> getBaiVietByType(String loaiBViet) {
+        Session s = this.factory.getObject().getCurrentSession();
+        CriteriaBuilder b = s.getCriteriaBuilder();
+        CriteriaQuery<Object[]> q = b.createQuery(Object[].class);
+        List<Predicate> predicates = new ArrayList<>();
+        Root rPost = q.from(BaiViet.class);
+        q.select(rPost);
+
+        Predicate p = b.equal(rPost.get("loaiBaiViet"), Integer.parseInt(loaiBViet));
+        predicates.add(p);
+        q.where(predicates.toArray(Predicate[]::new));
+
+        org.hibernate.query.Query query = s.createQuery(q);
+        return query.getResultList();
     }
 
 }
