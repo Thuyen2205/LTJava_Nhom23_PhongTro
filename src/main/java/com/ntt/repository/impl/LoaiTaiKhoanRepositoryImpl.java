@@ -28,7 +28,7 @@ public class LoaiTaiKhoanRepositoryImpl implements LoaiTaiKhoanRepository {
     @Override
     public List<LoaiTaiKhoan> getLoaiTaiKhoan() {
         Session s = this.factory.getObject().getCurrentSession();
-        Query q = s.createQuery("From LoaiTaiKhoan");
+        Query q = s.createQuery("From LoaiTaiKhoan Where id!=1");
 
         return q.getResultList();
     }

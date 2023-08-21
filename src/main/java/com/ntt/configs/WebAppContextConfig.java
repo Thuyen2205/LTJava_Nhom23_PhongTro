@@ -1,4 +1,4 @@
-    /*
+/*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
@@ -8,10 +8,13 @@ import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import com.ntt.formatter.LoaiBaiVietFormatter;
 import com.ntt.formatter.LoaiTaiKhoanFormatter;
+import java.util.Properties;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.format.FormatterRegistry;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
@@ -53,6 +56,8 @@ public class WebAppContextConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/css/**").addResourceLocations("/resource/css/");
         registry.addResourceHandler("/img/**").addResourceLocations("/resource/img/");
+        registry.addResourceHandler("/js/**").addResourceLocations("/resource/js/");
+
     }
 
     @Bean
@@ -72,14 +77,27 @@ public class WebAppContextConfig implements WebMvcConfigurer {
                 "api_key", "515925565185764",
                 "api_secret", "htAoHniRW5N34DQkcBo2Jh_5-XM",
                 "secure", true));
-        
+
         return c;
     }
-    
+
+    @Bean
+    public JavaMailSender javaMailSender() {
+        JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+        mailSender.setHost("smtp.gmail.com");
+        mailSender.setPort(587);
+        mailSender.setUsername("2051050488thuyen@ou.edu.vn");
+        mailSender.setPassword("thuyen22052002##");
+        Properties props = mailSender.getJavaMailProperties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        return mailSender;
+    }
+
     @Override
-    public void addFormatters(FormatterRegistry registry){
+    public void addFormatters(FormatterRegistry registry) {
         registry.addFormatter(new LoaiTaiKhoanFormatter());
         registry.addFormatter(new LoaiBaiVietFormatter());
-    
+
     }
 }

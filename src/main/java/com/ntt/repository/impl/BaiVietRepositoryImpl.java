@@ -5,9 +5,11 @@
 package com.ntt.repository.impl;
 
 import com.ntt.pojo.BaiViet;
+import com.ntt.pojo.HinhAnh;
 import com.ntt.pojo.NguoiDung;
 
 import com.ntt.repository.BaiVietRepository;
+import com.ntt.repository.TaiKhoanRepository;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Query;
@@ -20,6 +22,7 @@ import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -32,6 +35,8 @@ public class BaiVietRepositoryImpl implements BaiVietRepository {
 
     @Autowired
     private LocalSessionFactoryBean factory;
+    @Autowired
+    private TaiKhoanRepository taikhoan;
 
     @Override
     public List<BaiViet> getBaiViet() {
@@ -41,32 +46,18 @@ public class BaiVietRepositoryImpl implements BaiVietRepository {
     }
 
     @Override
-    public boolean addBaiViet(BaiViet baiviet) {
-        Session s = this.factory.getObject().getCurrentSession();
-        try {
-            s.save(baiviet);
-            return true;
-        } catch (HibernateException e) {
-            System.err.println(e.getMessage());
-        }
-        return false;
-
-    }
-
-    @Override
     public List<BaiViet> getBaiViet(String tenBaiViet) {
-        Session s= this.factory.getObject().getCurrentSession();
-        CriteriaBuilder builder= s.getCriteriaBuilder();
-        CriteriaQuery<NguoiDung> query= builder.createQuery(NguoiDung.class);
-        Root root=query.from(NguoiDung.class);
-        query= query.select(root);
-        
-        if(!tenBaiViet.isEmpty())
-        {
-            Predicate p =builder.equal(root.get("tenBaiViet").as(String.class), tenBaiViet.trim());
-            query =query.where(p);
+        Session s = this.factory.getObject().getCurrentSession();
+        CriteriaBuilder builder = s.getCriteriaBuilder();
+        CriteriaQuery<NguoiDung> query = builder.createQuery(NguoiDung.class);
+        Root root = query.from(NguoiDung.class);
+        query = query.select(root);
+
+        if (!tenBaiViet.isEmpty()) {
+            Predicate p = builder.equal(root.get("tenBaiViet").as(String.class), tenBaiViet.trim());
+            query = query.where(p);
         }
-        
+
         Query q = s.createQuery(query);
         return q.getResultList();
     }
@@ -94,6 +85,58 @@ public class BaiVietRepositoryImpl implements BaiVietRepository {
 
         org.hibernate.query.Query query = s.createQuery(q);
         return query.getResultList();
+    }
+
+    @Override
+    public List<Object> getBaiVietByIdNgDung(NguoiDung idNguoiDung) {
+        Session s = this.factory.getObject().getCurrentSession();
+        org.hibernate.query.Query q = s.createQuery("FROM BaiViet WHERE idNguoiDung= :idNguoiDung");
+        q.setParameter("idNguoiDung", idNguoiDung);
+        return q.getResultList();
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED)
+    public boolean addBaiViet(BaiViet baiviet) {
+        Session s = this.factory.getObject().getCurrentSession();
+
+        try {
+            s.save(baiviet);
+            HinhAnh hinhanh = new HinhAnh();
+            hinhanh.setIdBaiViet(baiviet);
+            hinhanh.setDuongDan(baiviet.getHinhAnh());
+            s.save(hinhanh);
+            return true;
+        } catch (HibernateException e) {
+            System.err.println(e.getMessage());
+        }
+        return false;
+    }
+
+    @Override
+    public boolean updateBaiViet(BaiViet baiviet) {
+        Session s = this.factory.getObject().getCurrentSession();
+        try {
+            s.update(baiviet);
+            return true;
+        } catch (HibernateException e) {
+            System.err.println(e.getMessage());
+        }
+        return false;
+    }
+
+    @Override
+    public boolean deleteBaiViet(int id) {
+        Session s = this.factory.getObject().getCurrentSession();
+        Object p = this.getBaiVietById(id);
+        try {
+            s.delete(p);
+            return true;
+        } catch (HibernateException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+
     }
 
 }

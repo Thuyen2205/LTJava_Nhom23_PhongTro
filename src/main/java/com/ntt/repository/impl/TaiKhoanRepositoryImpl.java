@@ -4,6 +4,7 @@
  */
 package com.ntt.repository.impl;
 
+import com.ntt.pojo.Follow;
 import com.ntt.pojo.LoaiTaiKhoan;
 import com.ntt.pojo.NguoiDung;
 import com.ntt.repository.TaiKhoanRepository;
@@ -19,6 +20,7 @@ import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -27,47 +29,68 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Repository
 @Transactional
-public class TaiKhoanRepositoryImpl implements TaiKhoanRepository{
-    
+public class TaiKhoanRepositoryImpl implements TaiKhoanRepository {
+
     @Autowired
     private LocalSessionFactoryBean sessionFactory;
+
     @Override
+    @Transactional(propagation = Propagation.REQUIRED)
     public boolean addTaiKhoan(NguoiDung nguoidung) {
-        Session session= this.sessionFactory.getObject().getCurrentSession();
-        try{
-           session.save(nguoidung);
-           return true;
-        }catch(HibernateException ex){
-            System.err.println(ex.getMessage()); 
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        try {
+            session.save(nguoidung);
+            Follow fl=new Follow();
+            fl.setIdKhachHang(nguoidung);
+            session.save(fl);
+            return true;
+        } catch (HibernateException ex) {
+            System.err.println(ex.getMessage());
         }
         return false;
     }
 
     @Override
     public List<NguoiDung> getTaiKhoan(String username) {
-        Session s= this.sessionFactory.getObject().getCurrentSession();
-        CriteriaBuilder builder= s.getCriteriaBuilder();
-        CriteriaQuery<NguoiDung> query= builder.createQuery(NguoiDung.class);
-        Root root=query.from(NguoiDung.class);
-        query= query.select(root);
-        
-        if(!username.isEmpty())
-        {
-            Predicate p =builder.equal(root.get("tenTaiKhoan").as(String.class), username.trim());
-            query =query.where(p);
+        Session s = this.sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder builder = s.getCriteriaBuilder();
+        CriteriaQuery<NguoiDung> query = builder.createQuery(NguoiDung.class);
+        Root root = query.from(NguoiDung.class);
+        query = query.select(root);
+
+        if (!username.isEmpty()) {
+            Predicate p = builder.equal(root.get("tenTaiKhoan").as(String.class), username.trim());
+            query = query.where(p);
         }
-        
+
         Query q = s.createQuery(query);
         return q.getResultList();
     }
 
     @Override
     public LoaiTaiKhoan getLoaiTaiKhoan(String tenLoaiTaiKhoan) {
-        Session session=this.sessionFactory.getObject().getCurrentSession();
-        Query q=session.createQuery("From LoaiTaiKhoan Where tenLoaiTaiKhoan = :tenLoaiTaiKhoan");
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        Query q = session.createQuery("From LoaiTaiKhoan Where tenLoaiTaiKhoan = :tenLoaiTaiKhoan");
         q.setParameter("tenLoaiTaiKhoan", tenLoaiTaiKhoan);
         return (LoaiTaiKhoan) q.getSingleResult();
-       
+
+    }
+
+    @Override
+    public NguoiDung getTaiKhoanbyTenTK(String tenTK) {
+        Session s = this.sessionFactory.getObject().getCurrentSession();
+        Query q = s.createQuery("FROM NguoiDung WHERE tenTaiKhoan=:tenTK");
+        q.setParameter("tenTK", tenTK);
+
+        return (NguoiDung) q.getSingleResult();
+    }
+
+    @Override
+    public NguoiDung getTaiKhoanId(int id) {
+        Session s = this.sessionFactory.getObject().getCurrentSession();
+        org.hibernate.query.Query q = s.createQuery("FROM NguoiDung WHERE id= :i");
+        q.setParameter("i", id);
+        return (NguoiDung) q.getSingleResult();
     }
 
 }

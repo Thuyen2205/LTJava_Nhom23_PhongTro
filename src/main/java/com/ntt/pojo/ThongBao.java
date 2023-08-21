@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Admins
+ * @author ThanhThuyen
  */
 @Entity
 @Table(name = "thong_bao")
@@ -38,7 +38,7 @@ public class ThongBao implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Size(max = 45)
+    @Size(max = 200)
     @Column(name = "noi_dung")
     private String noiDung;
     @JoinColumn(name = "id_bai_viet", referencedColumnName = "id")

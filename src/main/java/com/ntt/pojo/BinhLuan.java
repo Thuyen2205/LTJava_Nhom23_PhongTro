@@ -19,12 +19,13 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Admins
+ * @author ThanhThuyen
  */
 @Entity
 @Table(name = "binh_luan")
@@ -36,6 +37,48 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "BinhLuan.findByNgayBinhLuan", query = "SELECT b FROM BinhLuan b WHERE b.ngayBinhLuan = :ngayBinhLuan")})
 public class BinhLuan implements Serializable {
 
+    /**
+     * @return the tenBaiVietBinhLuan
+     */
+    public String getTenBaiVietBinhLuan() {
+        return tenBaiVietBinhLuan;
+    }
+
+    /**
+     * @param tenBaiVietBinhLuan the tenBaiVietBinhLuan to set
+     */
+    public void setTenBaiVietBinhLuan(String tenBaiVietBinhLuan) {
+        this.tenBaiVietBinhLuan = tenBaiVietBinhLuan;
+    }
+
+    /**
+     * @return the idBaiVietBinhLuan
+     */
+    public Integer getIdBaiVietBinhLuan() {
+        return idBaiVietBinhLuan;
+    }
+
+    /**
+     * @param idBaiVietBinhLuan the idBaiVietBinhLuan to set
+     */
+    public void setIdBaiVietBinhLuan(Integer idBaiVietBinhLuan) {
+        this.idBaiVietBinhLuan = idBaiVietBinhLuan;
+    }
+
+    /**
+     * @return the tenNguoiDangBai
+     */
+    public String getTenNguoiDangBai() {
+        return tenNguoiDangBai;
+    }
+
+    /**
+     * @param tenNguoiDangBai the tenNguoiDangBai to set
+     */
+    public void setTenNguoiDangBai(String tenNguoiDangBai) {
+        this.tenNguoiDangBai = tenNguoiDangBai;
+    }
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,8 +89,14 @@ public class BinhLuan implements Serializable {
     @Column(name = "noi_dung")
     private String noiDung;
     @Column(name = "ngay_binh_luan")
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     private Date ngayBinhLuan;
+    @Transient
+    private String tenBaiVietBinhLuan;
+    @Transient
+    private Integer idBaiVietBinhLuan;
+    @Transient
+    private String tenNguoiDangBai;
     @JoinColumn(name = "id_bai_viet", referencedColumnName = "id")
     @ManyToOne
     private BaiViet idBaiViet;
