@@ -17,7 +17,6 @@ C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro2\src\main\java\com\ntt\service\imp
 C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro2\src\main\java\com\ntt\controllers\ApiBaiVietController.java
 C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro2\src\main\java\com\ntt\pojo\ThongBao.java
 C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro2\src\main\java\com\ntt\repository\NguoiDungRepository.java
-C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro2\src\main\java\com\ntt\service\impl\EmailServiceImpl.java
 C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro2\src\main\java\com\ntt\repository\impl\FollowRepositoryImpl.java
 C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro2\src\main\java\com\ntt\repository\impl\TaiKhoanRepositoryImpl.java
 C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro2\src\main\java\com\ntt\controllers\ApiFollowController.java
@@ -27,7 +26,6 @@ C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro2\src\main\java\com\ntt\service\imp
 C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro2\src\main\java\com\ntt\service\LoaiBaiVietService.java
 C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro2\src\main\java\com\ntt\configs\WebAppContextConfig.java
 C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro2\src\main\java\com\ntt\service\FollowService.java
-C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro2\src\main\java\com\ntt\service\EmailService.java
 C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro2\src\main\java\com\ntt\controllers\TaiKhoanController.java
 C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro2\src\main\java\com\ntt\service\impl\NguoiDungServiceImpl.java
 C:\Users\thuye\Desktop\LTJava_Nhom23_PhongTro2\src\main\java\com\ntt\pojo\TieuChi.java

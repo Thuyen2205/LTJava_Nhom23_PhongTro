@@ -11,7 +11,7 @@ import javax.persistence.metamodel.SetAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.7.9.v20210604-rNA", date="2023-08-22T00:54:06")
+@Generated(value="EclipseLink-2.7.9.v20210604-rNA", date="2023-08-22T14:50:49")
 @StaticMetamodel(BaiViet.class)
 public class BaiViet_ { 
 

@@ -15,6 +15,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
+
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
@@ -80,19 +81,24 @@ public class WebAppContextConfig implements WebMvcConfigurer {
 
         return c;
     }
-
-    @Bean
-    public JavaMailSender javaMailSender() {
+    
+    @Bean 
+    public JavaMailSender javaMailSender(){
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
         mailSender.setHost("smtp.gmail.com");
         mailSender.setPort(587);
         mailSender.setUsername("2051050488thuyen@ou.edu.vn");
         mailSender.setPassword("thuyen22052002##");
-        Properties props = mailSender.getJavaMailProperties();
-        props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.starttls.enable", "true");
+
+        Properties properties = new Properties();
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.starttls.enable", "true");
+        mailSender.setJavaMailProperties(properties);
+
         return mailSender;
+    
     }
+ 
 
     @Override
     public void addFormatters(FormatterRegistry registry) {

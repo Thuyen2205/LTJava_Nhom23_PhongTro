@@ -18,10 +18,8 @@ com\ntt\repository\BaiVietRepository.class
 com\ntt\service\impl\TaiKhoanServiceImpl.class
 com\ntt\service\LoaiBaiVietService.class
 com\ntt\service\BinhLuanService.class
-com\ntt\service\EmailService.class
 com\ntt\formatter\LoaiBaiVietFormatter.class
 com\ntt\pojo\LoaiBaiViet.class
-com\ntt\service\impl\EmailServiceImpl.class
 com\ntt\configs\HibernateConfig.class
 com\ntt\pojo\Follow.class
 com\ntt\pojo\ThongBao.class
